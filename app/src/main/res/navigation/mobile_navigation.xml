@@ -24,8 +24,15 @@
         tools:layout="@layout/fragment_notifications" />
 
     <fragment
-        android:id="@+id/navigation_otro"
+        android:id="@+id/navigation_ayuda"
         android:name="com.example.tapastop.ui.ayuda.AyudaFragment"
-        android:label="Otro"
-        tools:layout="@layout/fragment_otro" />
+        android:label="Ayuda"
+        tools:layout="@layout/fragment_ayuda" />
+
+    <fragment
+        android:id="@+id/navigation_galardones"
+        android:name="com.example.tapastop.ui.galardones.GalardonesFragment"
+        android:label="Galardones"
+        tools:layout="@layout/fragment_galardones" />
+
 </navigation>

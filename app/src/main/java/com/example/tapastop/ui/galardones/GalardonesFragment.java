@@ -1,4 +1,4 @@
-package com.example.tapastop.ui.ayuda;
+package com.example.tapastop.ui.galardones;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,21 +11,22 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.tapastop.databinding.FragmentAyudaBinding;
+import com.example.tapastop.databinding.FragmentGalardonesBinding;
 
-public class AyudaFragment extends Fragment {
+public class GalardonesFragment extends Fragment {
 
-    private FragmentAyudaBinding binding;
+    private FragmentGalardonesBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        AyudaViewModel ayudaViewModel =
-                new ViewModelProvider(this).get(AyudaViewModel.class);
+        GalardonesViewModel galardonesViewModel =
+                new ViewModelProvider(this).get(GalardonesViewModel.class);
 
-        binding = FragmentAyudaBinding.inflate(inflater, container, false);
+        binding = FragmentGalardonesBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textAyuda;
-        ayudaViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        final TextView textView = binding.textGalardones;
+        galardonesViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 
