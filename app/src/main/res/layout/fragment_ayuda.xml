@@ -6,18 +6,25 @@
     android:layout_height="match_parent"
     tools:context=".ui.ayuda.AyudaFragment">
 
-    <TextView
-        android:id="@+id/text_ayuda"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="Ayuda fragment"
-        android:textAlignment="center"
-        android:textSize="20sp"
+    <Button
+        android:id="@+id/ajustesAyudaBtn"
+        android:layout_width="293dp"
+        android:layout_height="79dp"
+        android:text="Ajustes de perfil"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.273" />
+
+    <Button
+        android:id="@+id/ayudaAyudaBtn"
+        android:layout_width="290dp"
+        android:layout_height="77dp"
+        android:text="Ayuda"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/ajustesAyudaBtn" />
 </androidx.constraintlayout.widget.ConstraintLayout>
