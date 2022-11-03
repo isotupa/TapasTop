@@ -19,14 +19,10 @@ public class GalardonesFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        GalardonesViewModel galardonesViewModel =
-                new ViewModelProvider(this).get(GalardonesViewModel.class);
 
         binding = FragmentGalardonesBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textGalardones;
-        galardonesViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 
