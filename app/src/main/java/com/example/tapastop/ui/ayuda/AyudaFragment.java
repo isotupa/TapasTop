@@ -30,6 +30,7 @@ public class AyudaFragment extends Fragment {
 
     Button ajustes;
     Button ayuda;
+    Button logout;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -45,6 +46,15 @@ public class AyudaFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), EditarPerfilActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        logout =(Button)root.findViewById(R.id.logoutAyudaBtn);
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
                 startActivity(intent);
             }
         });

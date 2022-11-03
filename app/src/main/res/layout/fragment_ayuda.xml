@@ -25,6 +25,20 @@
         android:text="Ayuda"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ajustesAyudaBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/ajustesAyudaBtn"
+        app:layout_constraintVertical_bias="0.231" />
+
+    <Button
+        android:id="@+id/logoutAyudaBtn"
+        android:layout_width="290dp"
+        android:layout_height="77dp"
+        android:text="Logout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ajustesAyudaBtn"
+        app:layout_constraintVertical_bias="0.604" />
 </androidx.constraintlayout.widget.ConstraintLayout>
