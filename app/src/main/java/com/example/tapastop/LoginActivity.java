@@ -36,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                aviso.setVisibility(View.VISIBLE);
                 if (email.getText().equals("")) {
                     aviso.setVisibility(View.VISIBLE);
                 } else {

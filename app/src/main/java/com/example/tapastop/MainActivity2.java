@@ -1,6 +1,8 @@
 package com.example.tapastop;
 
 import android.os.Bundle;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -15,6 +17,8 @@ import com.example.tapastop.databinding.ActivityMain2Binding;
 public class MainActivity2 extends AppCompatActivity {
 
     private ActivityMain2Binding binding;
+
+    TextView usuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +36,9 @@ public class MainActivity2 extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main2);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
+
+        usuario = (TextView)findViewById(R.id.nobreUsuarioTxtEdit);
+        usuario.setText("asdsaf");
     }
 
 }
