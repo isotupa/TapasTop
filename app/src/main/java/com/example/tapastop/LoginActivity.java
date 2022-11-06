@@ -36,10 +36,10 @@ public class LoginActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                aviso.setVisibility(View.VISIBLE);
-                if (email.getText().equals("")) {
+                if (email.getText().equals("a")) {
                     aviso.setVisibility(View.VISIBLE);
                 } else {
+                    aviso.setVisibility(View.INVISIBLE);
                     Intent intent = new Intent(LoginActivity.this, MainActivity2.class);
                     startActivity(intent);
                 }
