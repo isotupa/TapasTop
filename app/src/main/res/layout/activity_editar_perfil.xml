@@ -8,15 +8,15 @@
 
     <EditText
         android:id="@+id/bioEPEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="334dp"
+        android:layout_height="55dp"
         android:hint="Biografía"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.441"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cambiarUsernameEPBtn"
-        app:layout_constraintVertical_bias="0.687" />
+        app:layout_constraintVertical_bias="0.515" />
 
     <EditText
         android:id="@+id/paisEPEdit"
@@ -25,10 +25,10 @@
         android:hint="País"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cambiarUsernameEPBtn"
-        app:layout_constraintVertical_bias="0.595" />
+        app:layout_constraintVertical_bias="0.374" />
 
     <EditText
         android:id="@+id/cambiarUsernameEPBtn"
@@ -37,9 +37,10 @@
         android:hint="Nuevo nombre de usuario"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.186"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.304" />
+        app:layout_constraintVertical_bias="0.23" />
 
     <EditText
         android:id="@+id/nombreEPEdit"
@@ -48,10 +49,10 @@
         android:hint="Nombre"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.525"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cambiarUsernameEPBtn"
-        app:layout_constraintVertical_bias="0.05" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023" />
 
     <EditText
         android:id="@+id/ap1EPEdit"
@@ -60,9 +61,10 @@
         android:hint="Apellido 1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.547"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cambiarUsernameEPBtn"
-        app:layout_constraintVertical_bias="0.134" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.104" />
 
     <EditText
         android:id="@+id/ap2EPEdit"
@@ -71,10 +73,10 @@
         android:hint="Apellido 2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.913"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cambiarUsernameEPBtn"
-        app:layout_constraintVertical_bias="0.22" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.103" />
 
     <EditText
         android:id="@+id/emailEPEdit"
@@ -83,10 +85,10 @@
         android:hint="E-mail"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.104"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cambiarUsernameEPBtn"
-        app:layout_constraintVertical_bias="0.32" />
+        app:layout_constraintVertical_bias="0.028" />
 
     <EditText
         android:id="@+id/ubiEPEdit"
@@ -95,10 +97,10 @@
         android:hint="Ubicación"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.113"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cambiarUsernameEPBtn"
-        app:layout_constraintVertical_bias="0.415" />
+        app:layout_constraintVertical_bias="0.146" />
 
     <EditText
         android:id="@+id/sexoEPEdit"
@@ -107,10 +109,10 @@
         android:hint="Género"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.106"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cambiarUsernameEPBtn"
-        app:layout_constraintVertical_bias="0.501" />
+        app:layout_constraintVertical_bias="0.262" />
 
     <Button
         android:id="@+id/guardarEPBtn"
@@ -119,10 +121,10 @@
         android:text="Guardar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.98"
+        app:layout_constraintHorizontal_bias="0.448"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bioEPEdit"
-        app:layout_constraintVertical_bias="0.448" />
+        app:layout_constraintVertical_bias="0.14" />
 
     <Button
         android:id="@+id/cancelarEPBtn"
@@ -131,10 +133,10 @@
         android:text="Cancelar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.006"
+        app:layout_constraintHorizontal_bias="0.457"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bioEPEdit"
-        app:layout_constraintVertical_bias="0.448" />
+        app:layout_constraintVertical_bias="0.469" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -142,10 +144,10 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.12"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.067"
+        app:layout_constraintVertical_bias="0.003"
         tools:srcCompat="@tools:sample/avatars" />
 
     <Button
@@ -154,10 +156,10 @@
         android:layout_height="wrap_content"
         android:text="Eliminar perfil"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guardarEPBtn"
-        app:layout_constraintHorizontal_bias="0.47"
-        app:layout_constraintStart_toEndOf="@+id/cancelarEPBtn"
-        app:layout_constraintTop_toBottomOf="@+id/bioEPEdit"
-        app:layout_constraintVertical_bias="0.448" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.451"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.957" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

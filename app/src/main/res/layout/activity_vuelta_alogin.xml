@@ -14,14 +14,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cuentaCreadaTxt"
-        app:layout_constraintVertical_bias="0.089"
-        app:srcCompat="@android:drawable/presence_online" />
+        app:layout_constraintVertical_bias="0.179"
+        app:srcCompat="@drawable/iconmonstr_checkbox_21" />
 
     <TextView
         android:id="@+id/cuentaCreadaTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cuenta Creada!"
+        android:text="¡Cuenta Creada!"
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -41,4 +41,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgTickImg"
         app:layout_constraintVertical_bias="0.474" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="303dp"
+        android:layout_height="92dp"
+        android:text="Para poder hacer login, accede a tu correo electrónico y pulsa el botón de verificar"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/vueltaALoginBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgTickImg" />
 </androidx.constraintlayout.widget.ConstraintLayout>
