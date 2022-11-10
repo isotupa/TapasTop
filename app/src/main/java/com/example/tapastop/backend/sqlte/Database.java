@@ -1,13 +1,12 @@
 package com.example.tapastop.backend.sqlte;
 
-import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-public class database extends SQLiteOpenHelper {
+public class Database extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NOMBRE = "tapas_top.db";
@@ -18,7 +17,7 @@ public class database extends SQLiteOpenHelper {
     public static final String TABLE_DEGUSTACION = "t_degustacion";
 
 
-    public database(@Nullable Context context){
+    public Database(@Nullable Modelo context){
         super(context,DATABASE_NOMBRE,null,DATABASE_VERSION);
     }
 
