@@ -18,7 +18,7 @@ public class LoginActivity extends AppCompatActivity {
     Button forgotPw;
     Button login;
     Button crearCuenta;
-    Controlador c = new Controlador();
+    //Controlador c = new Controlador();
     EditText email;
     EditText pw;
 
