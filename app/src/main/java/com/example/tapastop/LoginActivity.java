@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.tapastop.backend.sqlte.Controlador;
+
 import org.w3c.dom.Text;
 
 public class LoginActivity extends AppCompatActivity {
@@ -16,7 +18,7 @@ public class LoginActivity extends AppCompatActivity {
     Button forgotPw;
     Button login;
     Button crearCuenta;
-
+    Controlador c = new Controlador();
     EditText email;
     EditText pw;
 
