@@ -11,15 +11,21 @@ import com.example.tapastop.Entidades.Usuario;
 //
 public class Modelo {
     private Database database;
+    SQLiteDatabase db;
     public Modelo(){
         this.database = new Database(null);
-        SQLiteDatabase db = database.getWritableDatabase();
+        db = database.getWritableDatabase();
         if(db!=null){
             System.out.println("DataBase Creado correctamente");
         }
     }
     public boolean crearCuenta(Usuario usuario){
-
+        String query = "INSERT INTO t_usuarios Values (" +
+                usuario.getUsername() + "," +
+                usuario.getPassword()+"," +
+                usuario.getEdad()+"," +
+                usuario.getEmail()+")";
+        db.execSQL(query);
         return true;
     }
 }

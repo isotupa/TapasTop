@@ -3,7 +3,6 @@ package com.example.tapastop.backend.sqlte;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -64,7 +63,9 @@ public class Database extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
     }
-  /*  public static void main(String args[]){
-        onCreate()
+   /* public static void main(String args[]){
+        Database database = new Database(this);
+        SQLiteDatabase db = database.getWritableDatabase();
+        db.onCreate();
     }*/
 }
