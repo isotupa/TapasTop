@@ -55,7 +55,7 @@ public class database extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_AMIGOS +"(" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "Username1 TEXT NOT NULL," +
-                "Username1 TEXT NOT NULL ," +
+                "Username2 TEXT NOT NULL ," +
                 "FOREIGN KEY(Username1) REFERENCES TABLE_USUARIOS(Username)," +
                 "FOREIGN KEY(Username2) REFERENCES TABLE_USUARIOS(Username))");
     }
