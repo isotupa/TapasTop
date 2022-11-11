@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.tapastop.backend.sqlte.Controlador;
 import com.example.tapastop.backend.sqlte.Modelo;
 
 public class LoginActivity extends AppCompatActivity {
@@ -26,7 +27,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
 
-        Modelo m = new Modelo(this.findViewById(android.R.id.content).getRootView().getContext());
+        Controlador c = new Controlador(this.findViewById(android.R.id.content).getRootView().getContext());
 
         aviso = (TextView)findViewById(R.id.avisoLoginTxt);
         aviso.setVisibility(View.INVISIBLE);

@@ -52,7 +52,7 @@ public class Database extends SQLiteOpenHelper {
                 "id_Plato_comida INTEGER NOT NULL," +
                 "Calificacion INTEGER NOT NULL ," +
                 "FOREIGN KEY(Username) REFERENCES TABLE_USUARIOS(Username)," +
-                "FOREIGN KEY(Plato_comida) REFERENCES TABLE_PLATO_COMIDA(id))");
+                "FOREIGN KEY(id) REFERENCES TABLE_PLATO_COMIDA(id))");
         sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_AMIGOS +"(" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "Username1 TEXT NOT NULL," +

@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.tapastop.Entidades.Usuario;
 import com.example.tapastop.backend.sqlte.Controlador;
@@ -37,6 +38,8 @@ public class crearCuenta extends AppCompatActivity {
         emailWarning = (TextView)findViewById(R.id.emailWarning);
         usernameWarning = (TextView)findViewById(R.id.usernameWarning);
 
+        Controlador c = new Controlador(this.findViewById(android.R.id.content).getRootView().getContext());
+
         //edadWarning.setVisibility(View.INVISIBLE);
         pwWarning.setVisibility(View.INVISIBLE);
         emailWarning.setVisibility(View.INVISIBLE);
@@ -61,25 +64,31 @@ public class crearCuenta extends AppCompatActivity {
         siguiente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(String.valueOf(username.getText()).equals("")) {
-
-                }
-                else if(Integer.parseInt(String.valueOf(edad.getText())) < 18) {
-                    edadWarning.setVisibility(View.VISIBLE);
-                }
-                else if(!String.valueOf(password2.getText()).equals(String.valueOf(password1.getText()))) {
-                    pwWarning.setVisibility(View.VISIBLE);
-                }
-                else if(String.valueOf(email.getText()).equals("")) {
-
-                }
-                else {
-                    Usuario u = new Usuario(String.valueOf(username.getText()), String.valueOf(password2.getText()),
-                            String.valueOf(edad.getText()), String.valueOf(email.getText()));
-                    //c.crearCuenta(u);
-                    Intent intent = new Intent(crearCuenta.this, crearCuenta2.class);
-                    startActivity(intent);
-                }
+                Usuario u = new Usuario(String.valueOf(username.getText()), String.valueOf(password2.getText()),
+                        String.valueOf(edad.getText()), String.valueOf(email.getText()));
+                c.crearCuenta(u);
+                Toast.makeText(getApplicationContext(),String.valueOf(email.getText()),Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(crearCuenta.this, crearCuenta2.class);
+                startActivity(intent);
+//                if(String.valueOf(username.getText()).equals("")) {
+//
+//                }
+//                else if(Integer.parseInt(String.valueOf(edad.getText())) < 18) {
+//                    edadWarning.setVisibility(View.VISIBLE);
+//                }
+//                else if(!String.valueOf(password2.getText()).equals(String.valueOf(password1.getText()))) {
+//                    pwWarning.setVisibility(View.VISIBLE);
+//                }
+//                else if(String.valueOf(email.getText()).equals("")) {
+//
+//                }
+//                else {
+//                    Usuario u = new Usuario(String.valueOf(username.getText()), String.valueOf(password2.getText()),
+//                            String.valueOf(edad.getText()), String.valueOf(email.getText()));
+//                    c.crearCuenta(u);
+//                    Intent intent = new Intent(crearCuenta.this, crearCuenta2.class);
+//                    startActivity(intent);
+//                }
 
             }
         });
