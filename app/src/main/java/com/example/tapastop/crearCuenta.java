@@ -22,7 +22,8 @@ public class crearCuenta extends AppCompatActivity {
     EditText password2;
     EditText email;
     EditText edad;
-
+    Controlador c = new Controlador();
+    Usuario usuario ;
     TextView edadWarning;
     TextView pwWarning;
     TextView emailWarning;
@@ -50,6 +51,9 @@ public class crearCuenta extends AppCompatActivity {
         password2 = (EditText)findViewById(R.id.pw2CC1TxtEdit);
         email = (EditText)findViewById(R.id.emailCC1TxtEdit);
         edad = (EditText)findViewById(R.id.edadCC1NumberEdit);
+
+        usuario = new Usuario(username.getText().toString(),password1.getText().toString(),
+                edad.getText().toString(),email.getText().toString());
 
         volver =(Button)findViewById(R.id.volverCC1btn);
         volver.setOnClickListener(new View.OnClickListener() {
