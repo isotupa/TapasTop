@@ -1,8 +1,10 @@
 package com.example.tapastop.backend.sqlte;
 
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.tapastop.Entidades.Usuario;
@@ -25,12 +27,20 @@ public class Modelo {
         values.put("Email",usuario.getEmail());
         values.put("Password",usuario.getPassword());
         db.insert("t_usuarios",null,values);
-      /*  String query = "INSERT INTO t_usuarios Values (" +
-                usuario.getUsername() + "," +
-                usuario.getPassword()+"," +
-                usuario.getEdad()+"," +
-                usuario.getEmail()+")";
-        db.execSQL(query);*/
         return true;
+    }
+    public boolean login(String username, String password){
+        boolean res = false;
+        String query = "SELECT password from t_usuarios " +
+                "where username = " + username;
+        Cursor cursor = db.rawQuery(query,null);
+        if(cursor!=null){
+            cursor.moveToFirst();
+            String passw = cursor.getString(2);
+            if(password.equals(passw)){
+                res = true;
+            }
+        }
+        return res;
     }
 }
