@@ -82,6 +82,7 @@ public class crearCuenta extends AppCompatActivity {
                     Usuario u = new Usuario(String.valueOf(username.getText()), String.valueOf(password2.getText()),
                             String.valueOf(edad.getText()), String.valueOf(email.getText()));
                     c.crearCuenta(u);
+                    c.activo = u;
                     Intent intent = new Intent(crearCuenta.this, crearCuenta2.class);
                     startActivity(intent);
                 }

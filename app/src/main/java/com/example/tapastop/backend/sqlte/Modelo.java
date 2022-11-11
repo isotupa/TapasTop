@@ -48,10 +48,33 @@ public class Modelo {
         }
         return res;
     }
-    public boolean borrar_usuario(String username){
-        String query = "DELETE from t_usuarios" +
-                       "where username = '" + username + "'";
+    public boolean borrar_usuario(Usuario username){
+        String query = "DELETE from t_usuarios " +
+                       "where username = '" + username.getUsername() + "'";
         db.execSQL(query);
         return true;
+    }
+
+    public Usuario getUsuario(String username) {
+        Usuario res = new Usuario();
+        String query = "SELECT * from t_usuarios " +
+                "where username = '" + username + "'";
+        Cursor cursor = db.rawQuery(query,null);
+        if(cursor!=null){
+            cursor.moveToFirst();
+            try {
+                @SuppressLint("Range") String passw = cursor.getString(cursor.getColumnIndex("Password"));
+                @SuppressLint("Range") String edad = cursor.getString(cursor.getColumnIndex("Edad"));
+                @SuppressLint("Range") String email = cursor.getString(cursor.getColumnIndex("Email"));
+                res.setUsername(username);
+                res.setEdad(edad);
+                res.setPassword(passw);
+                res.setEmail(email);
+                return res;
+            } catch (Exception e) {
+                return null;
+            }
+        }
+        return res;
     }
 }

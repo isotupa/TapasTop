@@ -1,4 +1,5 @@
 package com.example.tapastop.backend.sqlte;
+
 import android.content.Context;
 
 import com.example.tapastop.Entidades.Usuario;
@@ -8,6 +9,7 @@ import com.example.tapastop.Entidades.Usuario;
 
 public class Controlador {
     private Modelo modelo;
+    public static Usuario activo;
 
     public Controlador(Context c){
         this.modelo = new Modelo(c);
@@ -25,4 +27,13 @@ public class Controlador {
     public boolean login(String username, String pw) {
         return modelo.login(username, pw);
     }
+
+    public boolean borrar_usuario(Usuario username){
+        return modelo.borrar_usuario(username);
+    }
+
+    public Usuario getUsuario(String username) {
+        return modelo.getUsuario(username);
+    }
+
 }

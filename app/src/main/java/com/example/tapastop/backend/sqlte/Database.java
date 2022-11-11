@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 
 public class Database extends SQLiteOpenHelper {
 
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     private static final String DATABASE_NOMBRE = "tapas_top.db";
     public static final String TABLE_USUARIOS = "t_usuarios";
     public static final String TABLE_AMIGOS = "t_amigos";
@@ -31,7 +31,8 @@ public class Database extends SQLiteOpenHelper {
                 "Edad TEXT NOT NULL," +
                 "Email TEXT NOT NULL,"+
                 "Nombre TEXT," +
-                "Apellidos TEXT," +
+                "Apellido1 TEXT," +
+                "Apellido2 TEXT," +
                 "Foto BLOB," +
                 "Ciudad TEXT," +
                 "Info TEXT )");

@@ -38,7 +38,6 @@ public class MainActivity2 extends AppCompatActivity {
         NavigationUI.setupWithNavController(binding.navView, navController);
 
         usuario = (TextView)findViewById(R.id.nobreUsuarioTxtEdit);
-        usuario.setText("asdsaf");
     }
 
 }

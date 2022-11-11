@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.tapastop.Entidades.Usuario;
 import com.example.tapastop.backend.sqlte.Controlador;
 
 public class LoginActivity extends AppCompatActivity {
@@ -47,6 +48,7 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "E-mail o contraseña incorrectos",Toast.LENGTH_LONG).show();
                 } else {
                     aviso.setVisibility(View.INVISIBLE);
+                    c.activo = c.getUsuario(String.valueOf(email.getText()));
                     Intent intent = new Intent(LoginActivity.this, MainActivity2.class);
                     startActivity(intent);
                 }
