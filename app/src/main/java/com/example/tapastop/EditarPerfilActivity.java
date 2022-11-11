@@ -50,7 +50,7 @@ public class EditarPerfilActivity extends AppCompatActivity {
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(EditarPerfilActivity.this);
                 builder.setTitle(R.string.app_name);
-                builder.setIcon(R.drawable.ic_dashboard_black_24dp);
+                builder.setIcon(R.drawable.iconmonstr_error_filled);
                 builder.setMessage("¿Estás seguro de querer borrar el perfil?")
                         .setCancelable(false)
                         .setPositiveButton("Sí", new DialogInterface.OnClickListener() {

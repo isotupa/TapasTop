@@ -7,7 +7,7 @@
     tools:context=".ui.home.HomeFragment">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/fotoFH"
         android:layout_width="109dp"
         android:layout_height="120dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -19,14 +19,14 @@
         tools:src="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/nombreFH"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Nombre"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.116"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/fotoFH"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.098" />
 
@@ -38,36 +38,36 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.171"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/fotoFH"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.06" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/nDegustFH"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Número de degustaciones"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.247"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/fotoFH"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.143" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/locNuevosFH"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Locales nuevos introducidos"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.287"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/fotoFH"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.185" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/solicitudesFH"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Solicitudes pendientes"
@@ -75,7 +75,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.133"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/fotoFH"
         app:layout_constraintVertical_bias="0.032" />
 
     <Button
@@ -111,7 +111,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.101"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/solicitudesFH"
         app:layout_constraintVertical_bias="0.102" />
 
     <TextView
@@ -123,7 +123,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.101"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/solicitudesFH"
         app:layout_constraintVertical_bias="0.181" />
 
     <TextView
@@ -135,7 +135,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.101"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/solicitudesFH"
         app:layout_constraintVertical_bias="0.263" />
 
     <TextView
@@ -147,7 +147,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.101"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/solicitudesFH"
         app:layout_constraintVertical_bias="0.334" />
 
     <TextView
