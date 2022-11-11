@@ -35,18 +35,23 @@ public class Modelo {
         Cursor cursor = db.rawQuery(query,null);
         if(cursor!=null){
             cursor.moveToFirst();
-            //try {
+            try {
             if(cursor.getColumnIndex("Password") != -1) {
                 @SuppressLint("Range") String passw = cursor.getString(cursor.getColumnIndex("Password"));
                 if(password.equals(passw)){
                     return true;
                 }
             }
-
-//            } catch (Exception e) {
-//                return false;
-//            }
+            } catch (Exception e) {
+                return false;
+            }
         }
         return res;
+    }
+    public boolean borrar_usuario(String username){
+        String query = "DELETE from t_usuarios" +
+                       "where username = '" + username + "'";
+        db.execSQL(query);
+        return true;
     }
 }
