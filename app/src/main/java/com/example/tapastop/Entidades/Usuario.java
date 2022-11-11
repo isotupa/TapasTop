@@ -10,6 +10,7 @@ public class Usuario {
     private String ap2;
     private String ubi;
     private String bio;
+    private String info;
 
 
     public Usuario(String username,String password,String edad,String email){

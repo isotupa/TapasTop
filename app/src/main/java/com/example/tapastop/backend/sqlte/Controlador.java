@@ -23,7 +23,9 @@ public class Controlador {
         }
         return true;
     }
-
+    public boolean crearCuenta2(Usuario usuario){
+        return modelo.crearCuenta2(usuario);
+    }
     public boolean login(String username, String pw) {
         return modelo.login(username, pw);
     }

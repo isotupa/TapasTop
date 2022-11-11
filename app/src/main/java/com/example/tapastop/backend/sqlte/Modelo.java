@@ -28,6 +28,18 @@ public class Modelo {
         db.insert("t_usuarios",null,values);
         return true;
     }
+    public boolean crearCuenta2(Usuario usuario){
+        ContentValues values = new ContentValues();
+        values.put("Nombre", usuario.getNombre());
+        values.put("Apellido1",usuario.getAp1());
+        values.put("Apellido2",usuario.getAp2());
+        values.put("Ciudad",usuario.getUbi());
+        values.put("Info",usuario.getBio());
+        String selection = "Username LIKE ?";
+        String[] selectionArgs = { usuario.getUsername() };
+        db.update("t_usuarios",values,selection,selectionArgs);
+        return true;
+    }
     public boolean login(String username, String password){
         boolean res = false;
         String query = "SELECT password from t_usuarios " +

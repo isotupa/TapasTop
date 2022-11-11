@@ -20,7 +20,7 @@ public class crearCuenta2 extends AppCompatActivity {
     EditText ap1;
     EditText ap2;
     EditText ubi;
-    EditText intro;
+    EditText info;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +31,7 @@ public class crearCuenta2 extends AppCompatActivity {
         ap1 =(EditText) findViewById(R.id.apellido1CCTxtxEdit);
         ap2 =(EditText) findViewById(R.id.apellido2CCTxtEdit);
         ubi =(EditText) findViewById(R.id.ubiCCTxtEdit);
-        intro =(EditText) findViewById(R.id.bioCCTxtEdit);
+        info =(EditText) findViewById(R.id.bioCCTxtEdit);
 
         Controlador c = new Controlador(this.findViewById(android.R.id.content).getRootView().getContext());
 
@@ -53,7 +53,8 @@ public class crearCuenta2 extends AppCompatActivity {
                 u.setAp1(String.valueOf(ap1.getText()));
                 u.setAp2(String.valueOf(ap2.getText()));
                 u.setUbi(String.valueOf(ubi.getText()));
-                u.setBio(String.valueOf(intro.getText()));
+                u.setBio(String.valueOf(info.getText()));
+                c.crearCuenta2(u);
                 Intent intent = new Intent(crearCuenta2.this, VueltaALogin.class);
                 startActivity(intent);
             }
