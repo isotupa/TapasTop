@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.tapastop.Entidades.Usuario;
 import com.example.tapastop.backend.sqlte.Controlador;
 
 public class crearCuenta extends AppCompatActivity {
@@ -73,6 +74,9 @@ public class crearCuenta extends AppCompatActivity {
 
                 }
                 else {
+                    Usuario u = new Usuario(String.valueOf(username.getText()), String.valueOf(password2.getText()),
+                            String.valueOf(edad.getText()), String.valueOf(email.getText()));
+                    //c.crearCuenta(u);
                     Intent intent = new Intent(crearCuenta.this, crearCuenta2.class);
                     startActivity(intent);
                 }

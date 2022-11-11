@@ -1,10 +1,11 @@
 package com.example.tapastop.backend.sqlte;
 
 
-
+import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.tapastop.Entidades.Usuario;
+import com.example.tapastop.LoginActivity;
 
 
 //En esta clase estara toda la logica de la app
@@ -12,8 +13,8 @@ import com.example.tapastop.Entidades.Usuario;
 public class Modelo {
     private Database database;
     SQLiteDatabase db;
-    public Modelo(){
-        this.database = new Database(null);
+    public Modelo(Context c){
+        this.database = new Database(c);
         db = database.getWritableDatabase();
         if(db!=null){
             System.out.println("DataBase Creado correctamente");

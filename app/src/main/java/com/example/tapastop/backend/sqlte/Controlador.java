@@ -8,8 +8,9 @@ public class Controlador {
     private Modelo modelo;
 
     public Controlador(){
-        this.modelo = new Modelo();
+        //this.modelo = new Modelo();
     }
+
     public boolean crearCuenta(Usuario usuario){
         //Controlador comprueba Pre condicion mayoria de edad
         if(Integer.parseInt(usuario.getEdad())>=18){

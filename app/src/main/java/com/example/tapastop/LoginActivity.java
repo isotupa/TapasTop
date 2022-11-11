@@ -9,16 +9,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.tapastop.backend.sqlte.Controlador;
-
-import org.w3c.dom.Text;
+import com.example.tapastop.backend.sqlte.Modelo;
 
 public class LoginActivity extends AppCompatActivity {
 
     Button forgotPw;
     Button login;
     Button crearCuenta;
-    //Controlador c = new Controlador();
     EditText email;
     EditText pw;
 
@@ -28,6 +25,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
+
+        Modelo m = new Modelo(this.findViewById(android.R.id.content).getRootView().getContext());
 
         aviso = (TextView)findViewById(R.id.avisoLoginTxt);
         aviso.setVisibility(View.INVISIBLE);

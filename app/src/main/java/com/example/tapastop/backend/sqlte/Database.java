@@ -16,9 +16,11 @@ public class Database extends SQLiteOpenHelper {
     public static final String TABLE_PLATO_COMIDA = "t_plato_comida";
     public static final String TABLE_DEGUSTACION = "t_degustacion";
 
+    private static Context c;
 
     public Database(@Nullable Context context){
         super(context,DATABASE_NOMBRE,null,DATABASE_VERSION);
+        c = context;
     }
 
     @Override
@@ -63,6 +65,7 @@ public class Database extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
     }
+
    /* public static void main(String args[]){
         Database database = new Database(this);
         SQLiteDatabase db = database.getWritableDatabase();
