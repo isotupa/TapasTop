@@ -21,4 +21,8 @@ public class Controlador {
         }
         return true;
     }
+
+    public boolean login(String username, String pw) {
+        return modelo.login(username, pw);
+    }
 }

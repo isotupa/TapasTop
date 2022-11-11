@@ -1,6 +1,5 @@
 package com.example.tapastop.backend.sqlte;
 
-
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
@@ -32,14 +31,21 @@ public class Modelo {
     public boolean login(String username, String password){
         boolean res = false;
         String query = "SELECT password from t_usuarios " +
-                "where username = " + username;
+                "where username = '" + username + "'";
         Cursor cursor = db.rawQuery(query,null);
         if(cursor!=null){
             cursor.moveToFirst();
-            String passw = cursor.getString(2);
-            if(password.equals(passw)){
-                res = true;
+            //try {
+            if(cursor.getColumnIndex("Password") != -1) {
+                @SuppressLint("Range") String passw = cursor.getString(cursor.getColumnIndex("Password"));
+                if(password.equals(passw)){
+                    return true;
+                }
             }
+
+//            } catch (Exception e) {
+//                return false;
+//            }
         }
         return res;
     }

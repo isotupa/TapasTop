@@ -8,9 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.tapastop.backend.sqlte.Controlador;
-import com.example.tapastop.backend.sqlte.Modelo;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -33,13 +33,18 @@ public class LoginActivity extends AppCompatActivity {
         aviso.setVisibility(View.INVISIBLE);
 
         email = (EditText)findViewById(R.id.emailLoginTxtEdit);
+        pw = (EditText)findViewById(R.id.pwLoginTextEdit);
 
         login =(Button)findViewById(R.id.loginLoginBtn);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (email.getText().equals("a")) {
-                    aviso.setVisibility(View.VISIBLE);
+                if(String.valueOf(email.getText()).isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "Pon un nombre",Toast.LENGTH_LONG).show();
+                } else if(String.valueOf(pw.getText()).isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "Pon una contraseña",Toast.LENGTH_LONG).show();
+                } else if(!c.login(String.valueOf(email.getText()),String.valueOf(pw.getText()))) {
+                    Toast.makeText(getApplicationContext(), "E-mail o contraseña incorrectos",Toast.LENGTH_LONG).show();
                 } else {
                     aviso.setVisibility(View.INVISIBLE);
                     Intent intent = new Intent(LoginActivity.this, MainActivity2.class);
