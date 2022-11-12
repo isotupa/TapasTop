@@ -45,8 +45,10 @@ public class Database extends SQLiteOpenHelper {
                 "Tipo_comida TEXT NOT NULL," +
                 "Region TEXT NOT NULL," +
                 "Sabor TEXT NOT NULL," +
-                "Descrpcion TEXT," +
-                "Foto BLOB)");
+                "Descripcion TEXT," +
+                "Foto BLOB," +
+                "Restaurante TEXT NOT NULL," +
+                "FOREIGN KEY(Restaurante) REFERENCES TABLE_RESTAURANTE(Nombre))");
         sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_DEGUSTACION +"(" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "Username TEXT NOT NULL," +

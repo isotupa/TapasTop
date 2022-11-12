@@ -2,6 +2,9 @@ package com.example.tapastop.backend.sqlte;
 
 import android.content.Context;
 
+import com.example.tapastop.Entidades.Degustacion;
+import com.example.tapastop.Entidades.Plato_comida;
+import com.example.tapastop.Entidades.Restaurante;
 import com.example.tapastop.Entidades.Usuario;
 //Esta clase recibe los datos de entrada del usuario
 //a traves de la interfaz y llama al modelo para ejecutar la llamada
@@ -37,5 +40,13 @@ public class Controlador {
     public Usuario getUsuario(String username) {
         return modelo.getUsuario(username);
     }
-
+    public boolean crearRestaurante(Restaurante restaurante){
+        return modelo.crearRestaurante(restaurante);
+    }
+    public boolean crearPlatoComida(Plato_comida plato_comida){
+        return modelo.crearPlatoComida(plato_comida);
+    }
+    public boolean crearDegustacion(Degustacion degustacion) {
+        return modelo.crearDegustacion(degustacion);
+    }
 }
