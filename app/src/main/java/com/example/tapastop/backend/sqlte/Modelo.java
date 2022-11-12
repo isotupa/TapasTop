@@ -11,6 +11,9 @@ import com.example.tapastop.Entidades.Plato_comida;
 import com.example.tapastop.Entidades.Restaurante;
 import com.example.tapastop.Entidades.Usuario;
 
+import java.util.ArrayList;
+import java.util.List;
+
 //En esta clase estara toda la logica de la app
 public class Modelo {
     private Database database;
@@ -121,5 +124,49 @@ public class Modelo {
         db.insert("t_degustacion",null,values);
         return true;
     }
+    public List listar_restaurantes(String pattern){
+        List<Restaurante> restaurantes = new ArrayList<Restaurante>();
+        String query = "SELECT * from  t_restaurante where nombre like '%" +pattern+ "%'";
+        Cursor cursor = db.rawQuery(query,null);
+        if(cursor != null){
+           // cursor.moveToFirst(); // nos posicionamos en el primer elemento
+            try {
+              /*  @SuppressLint("Range") String nombre = cursor.getString(cursor.getColumnIndex("Nombre"));
+                @SuppressLint("Range") String direccion = cursor.getString(cursor.getColumnIndex("Direccion"));
+                restaurante.setNombre(nombre);
+                restaurante.setDireccion(direccion);
+                Restaurante restaurante = new Restaurante(nombre,direccion);
+                restaurantes.add(restaurante);*/
+                while(cursor.moveToNext()) { //Deberia llevarnos al primer elemento
+                    @SuppressLint("Range") String nombre = cursor.getString(cursor.getColumnIndex("Nombre"));
+                    @SuppressLint("Range") String direccion = cursor.getString(cursor.getColumnIndex("Direccion"));
+                    Restaurante restaurante = new Restaurante(nombre, direccion);
+                    restaurantes.add(restaurante);
+                }
+                return restaurantes;
+            } catch (Exception e) {
+                return null;
+            }
 
-}
+        }
+        return restaurantes;
+    }
+
+    public List listar_restaurantes(Usuario usuario){
+        List<Degustacion> degustaciones = new ArrayList<Degustacion>();
+        String query = "SELECT * from  t_degustacion where Username = " + usuario.getUsername() ;
+        Cursor cursor = db.rawQuery(query,null);
+        if(cursor != null){
+            while (cursor.moveToNext()){
+                @SuppressLint("Range") Integer id  = cursor.getInt(cursor.getColumnIndex("id"));
+                @SuppressLint("Range") Integer id_plato_comida  = cursor.getInt(cursor.getColumnIndex("id_Plato_comida"));
+                @SuppressLint("Range") String calificacion  = cursor.getString(cursor.getColumnIndex("Calificacion"));
+                Degustacion degustacion = new Degustacion(id, usuario.getUsername(), id_plato_comida,calificacion);
+                degustaciones.add(degustacion);
+            }
+            return degustaciones;
+        }
+        return degustaciones;
+    }
+
+    }
