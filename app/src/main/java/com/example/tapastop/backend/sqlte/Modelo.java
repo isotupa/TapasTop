@@ -152,7 +152,7 @@ public class Modelo {
         return restaurantes;
     }
 
-    public List listar_restaurantes(Usuario usuario){
+    public List listar_degustaciones(Usuario usuario){
         List<Degustacion> degustaciones = new ArrayList<Degustacion>();
         String query = "SELECT * from  t_degustacion where Username = " + usuario.getUsername() ;
         Cursor cursor = db.rawQuery(query,null);
