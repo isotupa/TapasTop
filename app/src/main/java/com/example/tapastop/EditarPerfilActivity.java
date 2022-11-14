@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.tapastop.backend.sqlte.Controlador;
@@ -19,12 +20,34 @@ public class EditarPerfilActivity extends AppCompatActivity {
     Button guardar;
     Button eliminar;
 
+    EditText nombre;
+    EditText ap1, ap2, username, email, ubi, genero, bio;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editar_perfil);
 
         Controlador c = new Controlador(this.findViewById(android.R.id.content).getRootView().getContext());
+
+        nombre = findViewById(R.id.nombreEPEdit);
+        ap1 = findViewById(R.id.ap1EPEdit);
+        ap2 = findViewById(R.id.ap2EPEdit);
+        username = findViewById(R.id.cambiarUsernameEPBtn);
+        email = findViewById(R.id.emailEPEdit);
+        ubi = findViewById(R.id.ubiEPEdit);
+        genero = findViewById(R.id.sexoEPEdit);
+        bio = findViewById(R.id.bioEPEdit);
+
+        nombre.setText(c.activo.getNombre());
+        ap1.setText(c.activo.getAp1());
+        ap2.setText(c.activo.getAp2());
+        username.setText(c.activo.getUsername());
+        email.setText(c.activo.getEmail());
+        ubi.setText(c.activo.getUbi());
+        //genero.setText(c.activo.get());
+        bio.setText(c.activo.getBio());
+
 
         cancelar =(Button)findViewById(R.id.cancelarEPBtn);
         cancelar.setOnClickListener(new View.OnClickListener() {

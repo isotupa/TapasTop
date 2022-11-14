@@ -3,6 +3,7 @@ package com.example.tapastop;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -83,6 +84,7 @@ public class crearCuenta extends AppCompatActivity {
                             String.valueOf(edad.getText()), String.valueOf(email.getText()));
                     c.crearCuenta(u);
                     c.activo = u;
+                    startActivity(new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:" + String.valueOf(email.getText()))));
                     Intent intent = new Intent(crearCuenta.this, crearCuenta2.class);
                     startActivity(intent);
                 }

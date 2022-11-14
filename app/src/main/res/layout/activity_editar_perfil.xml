@@ -7,30 +7,6 @@
     tools:context=".EditarPerfilActivity">
 
     <EditText
-        android:id="@+id/bioEPEdit"
-        android:layout_width="334dp"
-        android:layout_height="55dp"
-        android:hint="Biografía"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.441"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cambiarUsernameEPBtn"
-        app:layout_constraintVertical_bias="0.515" />
-
-    <EditText
-        android:id="@+id/paisEPEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="País"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cambiarUsernameEPBtn"
-        app:layout_constraintVertical_bias="0.374" />
-
-    <EditText
         android:id="@+id/cambiarUsernameEPBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -116,27 +92,27 @@
 
     <Button
         android:id="@+id/guardarEPBtn"
-        android:layout_width="108dp"
-        android:layout_height="44dp"
+        android:layout_width="148dp"
+        android:layout_height="47dp"
         android:text="Guardar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.448"
+        app:layout_constraintHorizontal_bias="0.817"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bioEPEdit"
-        app:layout_constraintVertical_bias="0.14" />
+        app:layout_constraintVertical_bias="0.19" />
 
     <Button
         android:id="@+id/cancelarEPBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="171dp"
+        android:layout_height="48dp"
         android:text="Cancelar"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.457"
+        app:layout_constraintEnd_toStartOf="@+id/guardarEPBtn"
+        app:layout_constraintHorizontal_bias="0.84"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bioEPEdit"
-        app:layout_constraintVertical_bias="0.469" />
+        app:layout_constraintVertical_bias="0.185" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -152,14 +128,29 @@
 
     <Button
         android:id="@+id/borrarPerfilEPBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="331dp"
+        android:layout_height="53dp"
         android:text="Eliminar perfil"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.451"
+        app:layout_constraintHorizontal_bias="0.462"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.957" />
+        app:layout_constraintVertical_bias="0.955" />
+
+    <EditText
+        android:id="@+id/bioEPEdit"
+        android:layout_width="326dp"
+        android:layout_height="159dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="Biografía"
+        android:inputType="textMultiLine"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.699" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

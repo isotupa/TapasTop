@@ -21,17 +21,12 @@ public class LoginActivity extends AppCompatActivity {
     EditText email;
     EditText pw;
 
-    TextView aviso;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
 
         Controlador c = new Controlador(this.findViewById(android.R.id.content).getRootView().getContext());
-
-        aviso = (TextView)findViewById(R.id.avisoLoginTxt);
-        aviso.setVisibility(View.INVISIBLE);
 
         email = (EditText)findViewById(R.id.emailLoginTxtEdit);
         pw = (EditText)findViewById(R.id.pwLoginTextEdit);
@@ -47,7 +42,6 @@ public class LoginActivity extends AppCompatActivity {
                 } else if(!c.login(String.valueOf(email.getText()),String.valueOf(pw.getText()))) {
                     Toast.makeText(getApplicationContext(), "E-mail o contraseña incorrectos",Toast.LENGTH_LONG).show();
                 } else {
-                    aviso.setVisibility(View.INVISIBLE);
                     c.activo = c.getUsuario(String.valueOf(email.getText()));
                     Intent intent = new Intent(LoginActivity.this, MainActivity2.class);
                     startActivity(intent);

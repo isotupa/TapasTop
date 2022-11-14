@@ -22,85 +22,63 @@
         android:id="@+id/nombreFH"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nombre"
+        android:text="Marko Isotupa Cañizal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.116"
+        app:layout_constraintHorizontal_bias="0.196"
         app:layout_constraintStart_toEndOf="@+id/fotoFH"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.098" />
+        app:layout_constraintVertical_bias="0.101" />
 
     <TextView
         android:id="@+id/nobreUsuarioTxtEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nombre de usuario"
+        android:text="Kaizalk"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.171"
+        app:layout_constraintHorizontal_bias="0.114"
         app:layout_constraintStart_toEndOf="@+id/fotoFH"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.06" />
+        app:layout_constraintVertical_bias="0.053" />
 
     <TextView
         android:id="@+id/nDegustFH"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Número de degustaciones"
+        android:text="Sin información"
+        android:textAlignment="viewStart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.247"
+        app:layout_constraintHorizontal_bias="0.148"
         app:layout_constraintStart_toEndOf="@+id/fotoFH"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.143" />
+        app:layout_constraintVertical_bias="0.148" />
 
     <TextView
         android:id="@+id/locNuevosFH"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Locales nuevos introducidos"
+        android:text="0 locales nuevos"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.287"
+        app:layout_constraintHorizontal_bias="0.154"
         app:layout_constraintStart_toEndOf="@+id/fotoFH"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.185" />
+        app:layout_constraintVertical_bias="0.195" />
 
     <TextView
         android:id="@+id/solicitudesFH"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Solicitudes pendientes"
+        android:text="Solicitudes pendientes: 0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.133"
+        app:layout_constraintHorizontal_bias="0.141"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fotoFH"
         app:layout_constraintVertical_bias="0.032" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="386dp"
-        android:layout_height="201dp"
-        android:alpha="0.00"
-        app:iconTint="#00FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.48"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="386dp"
-        android:layout_height="201dp"
-        android:alpha="0.00"
-        app:iconTint="#00FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.48"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3"
-        app:layout_constraintVertical_bias="0.107" />
 
     <TextView
         android:id="@+id/textView7"

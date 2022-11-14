@@ -6,6 +6,8 @@ import com.example.tapastop.Entidades.Degustacion;
 import com.example.tapastop.Entidades.Plato_comida;
 import com.example.tapastop.Entidades.Restaurante;
 import com.example.tapastop.Entidades.Usuario;
+
+import java.util.List;
 //Esta clase recibe los datos de entrada del usuario
 //a traves de la interfaz y llama al modelo para ejecutar la llamada
 
@@ -40,6 +42,7 @@ public class Controlador {
     public Usuario getUsuario(String username) {
         return modelo.getUsuario(username);
     }
+
     public boolean crearRestaurante(Restaurante restaurante){
         return modelo.crearRestaurante(restaurante);
     }
@@ -48,5 +51,11 @@ public class Controlador {
     }
     public boolean crearDegustacion(Degustacion degustacion) {
         return modelo.crearDegustacion(degustacion);
+    }
+    public List<Restaurante> listarRestaurantes(String pattern) {
+        return modelo.listar_restaurantes(pattern);
+    }
+    public List<Degustacion> listarDegustaciones(Usuario usuario) {
+        return modelo.listar_degustaciones(usuario);
     }
 }

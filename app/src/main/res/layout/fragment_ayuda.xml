@@ -13,10 +13,10 @@
         android:text="Ajustes de perfil"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.273" />
+        app:layout_constraintVertical_bias="0.108" />
 
     <Button
         android:id="@+id/ayudaAyudaBtn"
@@ -28,7 +28,7 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ajustesAyudaBtn"
-        app:layout_constraintVertical_bias="0.231" />
+        app:layout_constraintVertical_bias="0.2" />
 
     <Button
         android:id="@+id/logoutAyudaBtn"
@@ -40,5 +40,5 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ajustesAyudaBtn"
-        app:layout_constraintVertical_bias="0.604" />
+        app:layout_constraintVertical_bias="0.55" />
 </androidx.constraintlayout.widget.ConstraintLayout>
