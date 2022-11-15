@@ -62,6 +62,14 @@ public class EditarPerfilActivity extends AppCompatActivity {
         guardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                c.activo.setNombre(nombre.getText().toString());
+                c.activo.setAp1(ap1.getText().toString());
+                c.activo.setAp2(ap2.getText().toString());
+                c.activo.setUsername(username.getText().toString());
+                c.activo.setEmail(email.getText().toString());
+                c.activo.setUbi(ubi.getText().toString());
+                c.activo.setBio(bio.getText().toString());
+
                 Intent intent = new Intent(EditarPerfilActivity.this, MainActivity2.class);
                 startActivity(intent);
             }

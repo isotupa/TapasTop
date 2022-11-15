@@ -154,7 +154,7 @@ public class Modelo {
 
     public List listar_degustaciones(Usuario usuario){
         List<Degustacion> degustaciones = new ArrayList<Degustacion>();
-        String query = "SELECT * from  t_degustacion where Username = " + usuario.getUsername() ;
+        String query = "SELECT * from  t_degustacion where Username = '" + usuario.getUsername() + "'" ;
         Cursor cursor = db.rawQuery(query,null);
         if(cursor != null){
             while (cursor.moveToNext()){

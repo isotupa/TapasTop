@@ -21,6 +21,21 @@ public class LoginActivity extends AppCompatActivity {
     EditText email;
     EditText pw;
 
+    /*
+    - Añadir imágenes a la entidad Restaurante
+    - Añadir botones en home
+    - Mirar porqué no se guarda el nombre real
+    - Clases para conseguir últimas degustaciones de un usuario
+    - Añadir galardones
+    - Búsqueda de restaurantes funcional
+    - Botón de ayuda que funcione
+    - Activación cuenta/ mandar email
+    - Añadir google maps para definir ubicación de restaurante
+    - Modificar degustación
+    - Búsqueda de degustaciones?
+    - Conseguir niveles de galardones
+     */
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
