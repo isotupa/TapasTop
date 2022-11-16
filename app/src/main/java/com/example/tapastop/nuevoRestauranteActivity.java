@@ -20,6 +20,8 @@ public class nuevoRestauranteActivity extends AppCompatActivity {
     Button guardar;
     Button cancelar;
 
+    Button nuevo;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +31,7 @@ public class nuevoRestauranteActivity extends AppCompatActivity {
         dir = findViewById(R.id.direccionNRTxtEdit);
 
         guardar = findViewById(R.id.guardarNDBtn2);
+        nuevo = findViewById(R.id.nuevoPlatoBtn);
 
         Controlador c = new Controlador(this.findViewById(android.R.id.content).getRootView().getContext());
 
@@ -39,6 +42,16 @@ public class nuevoRestauranteActivity extends AppCompatActivity {
                 c.crearRestaurante(res);
                 Toast.makeText(getApplicationContext(),"¡Restaurante creado!" ,Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(nuevoRestauranteActivity.this, MainActivity2.class);
+                startActivity(intent);
+
+            }
+        });
+
+        nuevo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(nuevoRestauranteActivity.this, NuevoPlatoActivity.class);
                 startActivity(intent);
 
             }

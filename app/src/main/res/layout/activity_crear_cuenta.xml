@@ -86,32 +86,6 @@
         app:layout_constraintTop_toBottomOf="@+id/emailCC1TxtEdit"
         app:layout_constraintVertical_bias="0.722" />
 
-    <EditText
-        android:id="@+id/edadCC1NumberEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Introduce tu edad"
-        android:inputType="number"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailCC1TxtEdit"
-        app:layout_constraintVertical_bias="0.178" />
-
-    <TextView
-        android:id="@+id/edadWarning"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="¡Debes tener por lo menos 18 años!"
-        android:textColor="#FF0000"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edadCC1NumberEdit"
-        app:layout_constraintVertical_bias="0.0" />
-
     <TextView
         android:id="@+id/usernameWarning"
         android:layout_width="wrap_content"
@@ -147,5 +121,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pw2CC1TxtEdit"
         app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/editTextDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="date"
+        app:layout_constraintBottom_toTopOf="@+id/volverCC1btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailWarning" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

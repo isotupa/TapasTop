@@ -34,7 +34,7 @@ public class crearCuenta extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crear_cuenta);
 
-        edadWarning = (TextView)findViewById(R.id.edadWarning);
+        //edadWarning = (TextView)findViewById(R.id.editTextDate);
         pwWarning = (TextView)findViewById(R.id.pwWarning);
         emailWarning = (TextView)findViewById(R.id.emailWarning);
         usernameWarning = (TextView)findViewById(R.id.usernameWarning);
@@ -50,7 +50,7 @@ public class crearCuenta extends AppCompatActivity {
         password1 = (EditText)findViewById(R.id.pw1CC1TxtEdit);
         password2 = (EditText)findViewById(R.id.pw2CC1TxtEdit);
         email = (EditText)findViewById(R.id.emailCC1TxtEdit);
-        edad = (EditText)findViewById(R.id.edadCC1NumberEdit);
+        edad = (EditText)findViewById(R.id.editTextDate);
 
         usuario = new Usuario(username.getText().toString(),password1.getText().toString(),
                 edad.getText().toString(),email.getText().toString());
@@ -70,6 +70,9 @@ public class crearCuenta extends AppCompatActivity {
             public void onClick(View view) {
 
                 String EMAIL_REGEX = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+                String DATE_REGEX = "^[0-9]{1,2}\\/[0-9]{1,2}\\/[0-9]{4}$";
+
+                int anyos = 0;
 
                 if(String.valueOf(username.getText()).isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Pon un nombre válido",Toast.LENGTH_LONG).show();
@@ -77,14 +80,26 @@ public class crearCuenta extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Las contraseñas no coinciden",Toast.LENGTH_LONG).show();
                 } else if(!String.valueOf(email.getText()).matches(EMAIL_REGEX)) {
                     Toast.makeText(getApplicationContext(), "El formato del email no es correcto",Toast.LENGTH_LONG).show();
-                } else if(Integer.parseInt(String.valueOf(edad.getText())) < 18) {
-                    Toast.makeText(getApplicationContext(), "Debes tener por lo menos 18 años",Toast.LENGTH_LONG).show();
+                } else if(!String.valueOf(edad.getText()).matches(DATE_REGEX)) {
+                    Toast.makeText(getApplicationContext(), "Introduce una fecha válida",Toast.LENGTH_LONG).show();
+                } else if(!String.valueOf(edad.getText()).matches(DATE_REGEX)) {
+                    String[] res = edad.getText().toString().split("/");
+                    int dia = Integer.parseInt(res[0]);
+                    int mes = Integer.parseInt(res[1]);
+                    int ano = Integer.parseInt(res[2]);
+                    if((dia < 0 || dia > 31) || (mes < 0 || mes > 12) || (ano < 0 || ano > 2022)) {
+                        Toast.makeText(getApplicationContext(), "Introduce una fecha válida",Toast.LENGTH_LONG).show();
+                    } else if (ano > 2004) {
+                        Toast.makeText(getApplicationContext(), "Debes tener por lo menos 18 años",Toast.LENGTH_LONG).show();
+                    } else {
+                        anyos = 2022 - ano;
+                    }
                 } else {
                     Usuario u = new Usuario(String.valueOf(username.getText()), String.valueOf(password2.getText()),
-                            String.valueOf(edad.getText()), String.valueOf(email.getText()));
+                            anyos + "", String.valueOf(email.getText()));
                     c.crearCuenta(u);
                     c.activo = u;
-                    startActivity(new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:" + String.valueOf(email.getText()))));
+                    //startActivity(new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:" + String.valueOf(email.getText()))));
                     Intent intent = new Intent(crearCuenta.this, crearCuenta2.class);
                     startActivity(intent);
                 }

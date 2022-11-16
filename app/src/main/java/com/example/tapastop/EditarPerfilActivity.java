@@ -70,6 +70,10 @@ public class EditarPerfilActivity extends AppCompatActivity {
                 c.activo.setUbi(ubi.getText().toString());
                 c.activo.setBio(bio.getText().toString());
 
+                //c.crearCuenta2(c.activo);
+
+                //c.activo = c.getUsuario(username.getText().toString());
+
                 Intent intent = new Intent(EditarPerfilActivity.this, MainActivity2.class);
                 startActivity(intent);
             }

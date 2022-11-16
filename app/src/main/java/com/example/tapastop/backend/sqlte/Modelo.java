@@ -17,7 +17,7 @@ import java.util.List;
 //En esta clase estara toda la logica de la app
 public class Modelo {
     private Database database;
-    SQLiteDatabase db;
+    static SQLiteDatabase db;
 
     public Modelo(Context c) {
         this.database = new Database(c);
@@ -101,7 +101,7 @@ public class Modelo {
         return res;
     }
 
-    public boolean crearRestaurante(Restaurante restaurante) {
+    public static boolean crearRestaurante(Restaurante restaurante) {
         ContentValues values = new ContentValues();
         values.put("Nombre", restaurante.getNombre());
         values.put("Direccion", restaurante.getDireccion());
@@ -109,7 +109,7 @@ public class Modelo {
         return true;
     }
 
-    public boolean crearPlatoComida(Plato_comida platoComida) {
+    public static boolean crearPlatoComida(Plato_comida platoComida) {
         ContentValues values = new ContentValues();
         values.put("id", platoComida.getId());
         values.put("Nombre", platoComida.getNombre());
@@ -171,7 +171,7 @@ public class Modelo {
         return degustaciones;
     }
 
-    public Restaurante get_Restaurante(Integer id_plato) {
+    public static Restaurante get_Restaurante(Integer id_plato) {
         Restaurante res = null;
         String query = "SELECT * from t_restaurante where nombre = " +
                 "(Select nombre from t_plato_comida where id = " + id_plato + ")";

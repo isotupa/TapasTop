@@ -10,8 +10,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.tapastop.Entidades.Plato_comida;
+import com.example.tapastop.Entidades.Restaurante;
 import com.example.tapastop.Entidades.Usuario;
 import com.example.tapastop.backend.sqlte.Controlador;
+import com.example.tapastop.backend.sqlte.Modelo;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -83,5 +86,24 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+/*
+        Restaurante res1 = new Restaurante("MacDonalds", "Calle Mayor");
+        Restaurante res2 = new Restaurante("Kurger Bing", "Calle Menor");
+        Restaurante res3 = new Restaurante("Wendys", "Calle Central");
+
+        Modelo.crearRestaurante(res1);
+        Modelo.crearRestaurante(res2);
+        Modelo.crearRestaurante(res3);
+
+        Plato_comida p1 = new Plato_comida(10, "KrangreBurger", "Comida Rápida", "USA", "Malo", "MacDonalds");
+        Plato_comida p2 = new Plato_comida(11, "QuarterPound", "Comida Rápida", "USA", "Bien", "Kurger Bing");
+        Plato_comida p3 = new Plato_comida(12, "Burger", "Comida Rápida", "USA", "Malo", "Wendys");
+
+        Modelo.crearPlatoComida(p1);
+        Modelo.crearPlatoComida(p2);
+        Modelo.crearPlatoComida(p3);
+*/
+
     }
 }

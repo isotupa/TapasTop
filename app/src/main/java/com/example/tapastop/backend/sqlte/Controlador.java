@@ -15,17 +15,14 @@ import java.util.List;
 public class Controlador {
     private Modelo modelo;
     public static Usuario activo;
+    public static Restaurante resActual;
 
     public Controlador(Context c){
         this.modelo = new Modelo(c);
     }
 
     public boolean crearCuenta(Usuario usuario){
-        //Controlador comprueba Pre condicion mayoria de edad
-        if(Integer.parseInt(usuario.getEdad())>=18){
-            //llamamos a modelo
-            modelo.crearCuenta(usuario);
-        }
+        modelo.crearCuenta(usuario);
         return true;
     }
     public boolean crearCuenta2(Usuario usuario){

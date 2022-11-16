@@ -11,9 +11,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tapastop.Entidades.Degustacion;
 import com.example.tapastop.R;
+import com.example.tapastop.backend.sqlte.Controlador;
+import com.example.tapastop.backend.sqlte.Modelo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class DegustacionAdapter extends RecyclerView.Adapter<DegustacionAdapter.ViewHolder>{
     List<Degustacion> degustaciones;
@@ -34,9 +37,14 @@ public class DegustacionAdapter extends RecyclerView.Adapter<DegustacionAdapter.
     }
     @Override
     public void onBindViewHolder(@NonNull DegustacionAdapter.ViewHolder holder, int position) {
-        //int res = (int) degustaciones.get(position).get;
-        //holder.images.setImageResource(res);
-        holder.plato.setText(degustaciones.get(position).getId_plato()+"");
+
+        Random random = new Random();
+        // generate random number from 0 to 3
+        int number = random.nextInt(100000);
+
+        holder.plato.setText(number+"");
+        //holder.restaurante.setText(Modelo.get_Restaurante(degustaciones.get(position).getId_plato()).getNombre());
+        holder.restaurante.setText("hai");
         holder.rating.setRating(Integer.parseInt(degustaciones.get(position).getCalificacion()));
         //holder.rating.setRating((float)3.5);
         //holder.restaurante.setText("un restaurante");
@@ -58,6 +66,7 @@ public class DegustacionAdapter extends RecyclerView.Adapter<DegustacionAdapter.
             plato = itemView.findViewById(R.id.plato);
             restaurante = itemView.findViewById(R.id.restaurante);
             rating = (RatingBar) itemView.findViewById(R.id.ratingBar);
+            rating.setIsIndicator(true);
         }
     }
 }
