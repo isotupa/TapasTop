@@ -18,57 +18,62 @@ import java.util.List;
 public class Modelo {
     private Database database;
     SQLiteDatabase db;
-    public Modelo(Context c){
+
+    public Modelo(Context c) {
         this.database = new Database(c);
         db = database.getWritableDatabase();
-        if(db!=null){
+        if (db != null) {
             System.out.println("DataBase Creado correctamente");
         }
     }
-    public boolean crearCuenta(Usuario usuario){
+
+    public boolean crearCuenta(Usuario usuario) {
         ContentValues values = new ContentValues();
         values.put("Username", usuario.getUsername());
-        values.put("Edad",usuario.getEdad());
-        values.put("Email",usuario.getEmail());
-        values.put("Password",usuario.getPassword());
-        db.insert("t_usuarios",null,values);
+        values.put("Edad", usuario.getEdad());
+        values.put("Email", usuario.getEmail());
+        values.put("Password", usuario.getPassword());
+        db.insert("t_usuarios", null, values);
         return true;
     }
-    public boolean crearCuenta2(Usuario usuario){
+
+    public boolean crearCuenta2(Usuario usuario) {
         ContentValues values = new ContentValues();
         values.put("Nombre", usuario.getNombre());
-        values.put("Apellido1",usuario.getAp1());
-        values.put("Apellido2",usuario.getAp2());
-        values.put("Ciudad",usuario.getUbi());
-        values.put("Info",usuario.getBio());
+        values.put("Apellido1", usuario.getAp1());
+        values.put("Apellido2", usuario.getAp2());
+        values.put("Ciudad", usuario.getUbi());
+        values.put("Info", usuario.getBio());
         String selection = "Username LIKE ?";
-        String[] selectionArgs = { usuario.getUsername() };
-        db.update("t_usuarios",values,selection,selectionArgs);
+        String[] selectionArgs = {usuario.getUsername()};
+        db.update("t_usuarios", values, selection, selectionArgs);
         return true;
     }
-    public boolean login(String username, String password){
+
+    public boolean login(String username, String password) {
         boolean res = false;
         String query = "SELECT password from t_usuarios " +
                 "where username = '" + username + "'";
-        Cursor cursor = db.rawQuery(query,null);
-        if(cursor!=null){
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor != null) {
             cursor.moveToFirst();
             try {
-            if(cursor.getColumnIndex("Password") != -1) {
-                @SuppressLint("Range") String passw = cursor.getString(cursor.getColumnIndex("Password"));
-                if(password.equals(passw)){
-                    return true;
+                if (cursor.getColumnIndex("Password") != -1) {
+                    @SuppressLint("Range") String passw = cursor.getString(cursor.getColumnIndex("Password"));
+                    if (password.equals(passw)) {
+                        return true;
+                    }
                 }
-            }
             } catch (Exception e) {
                 return false;
             }
         }
         return res;
     }
-    public boolean borrar_usuario(Usuario username){
+
+    public boolean borrar_usuario(Usuario username) {
         String query = "DELETE from t_usuarios " +
-                       "where username = '" + username.getUsername() + "'";
+                "where username = '" + username.getUsername() + "'";
         db.execSQL(query);
         return true;
     }
@@ -77,8 +82,8 @@ public class Modelo {
         Usuario res = new Usuario();
         String query = "SELECT * from t_usuarios " +
                 "where username = '" + username + "'";
-        Cursor cursor = db.rawQuery(query,null);
-        if(cursor!=null){
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor != null) {
             cursor.moveToFirst();
             try {
                 @SuppressLint("Range") String passw = cursor.getString(cursor.getColumnIndex("Password"));
@@ -95,49 +100,46 @@ public class Modelo {
         }
         return res;
     }
-    public boolean crearRestaurante(Restaurante restaurante){
+
+    public boolean crearRestaurante(Restaurante restaurante) {
         ContentValues values = new ContentValues();
         values.put("Nombre", restaurante.getNombre());
-        values.put("Direccion",restaurante.getDireccion());
-        db.insert("t_restaurante",null,values);
+        values.put("Direccion", restaurante.getDireccion());
+        db.insert("t_restaurante", null, values);
         return true;
     }
-    public boolean crearPlatoComida(Plato_comida platoComida){
+
+    public boolean crearPlatoComida(Plato_comida platoComida) {
         ContentValues values = new ContentValues();
         values.put("id", platoComida.getId());
-        values.put("Nombre",platoComida.getNombre());
-        values.put("Tipo_comida",platoComida.getTipo_comida());
-        values.put("Region",platoComida.getRegion());
-        values.put("Sabor",platoComida.getSabor());
-        values.put("Descripcion",platoComida.getDescripcion());
+        values.put("Nombre", platoComida.getNombre());
+        values.put("Tipo_comida", platoComida.getTipo_comida());
+        values.put("Region", platoComida.getRegion());
+        values.put("Sabor", platoComida.getSabor());
+        values.put("Descripcion", platoComida.getDescripcion());
         //FOTO
-        values.put("Restaurante",platoComida.getRestaurante());
-        db.insert("t_plato_comida",null,values);
+        values.put("Restaurante", platoComida.getRestaurante());
+        db.insert("t_plato_comida", null, values);
         return true;
     }
-    public boolean crearDegustacion(Degustacion degustacion){
+
+    public boolean crearDegustacion(Degustacion degustacion) {
         ContentValues values = new ContentValues();
         values.put("id", degustacion.getId());
         values.put("Username", degustacion.getUsername());
-        values.put("id_Plato_comida",degustacion.getId_plato());
-        values.put("Calificacion",degustacion.getCalificacion());
-        db.insert("t_degustacion",null,values);
+        values.put("id_Plato_comida", degustacion.getId_plato());
+        values.put("Calificacion", degustacion.getCalificacion());
+        db.insert("t_degustacion", null, values);
         return true;
     }
-    public List listar_restaurantes(String pattern){
+
+    public List listar_restaurantes(String pattern) {
         List<Restaurante> restaurantes = new ArrayList<Restaurante>();
-        String query = "SELECT * from  t_restaurante where nombre like '%" +pattern+ "%'";
-        Cursor cursor = db.rawQuery(query,null);
-        if(cursor != null){
-           // cursor.moveToFirst(); // nos posicionamos en el primer elemento
+        String query = "SELECT * from  t_restaurante where nombre like '%" + pattern + "%'";
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor != null) {
             try {
-              /*  @SuppressLint("Range") String nombre = cursor.getString(cursor.getColumnIndex("Nombre"));
-                @SuppressLint("Range") String direccion = cursor.getString(cursor.getColumnIndex("Direccion"));
-                restaurante.setNombre(nombre);
-                restaurante.setDireccion(direccion);
-                Restaurante restaurante = new Restaurante(nombre,direccion);
-                restaurantes.add(restaurante);*/
-                while(cursor.moveToNext()) { //Deberia llevarnos al primer elemento
+                while (cursor.moveToNext()) { //Deberia llevarnos al primer elemento
                     @SuppressLint("Range") String nombre = cursor.getString(cursor.getColumnIndex("Nombre"));
                     @SuppressLint("Range") String direccion = cursor.getString(cursor.getColumnIndex("Direccion"));
                     Restaurante restaurante = new Restaurante(nombre, direccion);
@@ -152,16 +154,16 @@ public class Modelo {
         return restaurantes;
     }
 
-    public List listar_degustaciones(Usuario usuario){
+    public List listar_degustaciones(Usuario usuario) {
         List<Degustacion> degustaciones = new ArrayList<Degustacion>();
-        String query = "SELECT * from  t_degustacion where Username = '" + usuario.getUsername() + "'" ;
-        Cursor cursor = db.rawQuery(query,null);
-        if(cursor != null){
-            while (cursor.moveToNext()){
-                @SuppressLint("Range") Integer id  = cursor.getInt(cursor.getColumnIndex("id"));
-                @SuppressLint("Range") Integer id_plato_comida  = cursor.getInt(cursor.getColumnIndex("id_Plato_comida"));
-                @SuppressLint("Range") String calificacion  = cursor.getString(cursor.getColumnIndex("Calificacion"));
-                Degustacion degustacion = new Degustacion(id, usuario.getUsername(), id_plato_comida,calificacion);
+        String query = "SELECT * from  t_degustacion where Username = '" + usuario.getUsername() + "'";
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor != null) {
+            while (cursor.moveToNext()) {
+                @SuppressLint("Range") Integer id = cursor.getInt(cursor.getColumnIndex("id"));
+                @SuppressLint("Range") Integer id_plato_comida = cursor.getInt(cursor.getColumnIndex("id_Plato_comida"));
+                @SuppressLint("Range") String calificacion = cursor.getString(cursor.getColumnIndex("Calificacion"));
+                Degustacion degustacion = new Degustacion(id, usuario.getUsername(), id_plato_comida, calificacion);
                 degustaciones.add(degustacion);
             }
             return degustaciones;
@@ -169,4 +171,29 @@ public class Modelo {
         return degustaciones;
     }
 
+    public Restaurante get_Restaurante(Integer id_plato) {
+
+        return null;
     }
+
+    public Degustacion get_Degustacion(Integer id_plato) {
+        Degustacion des = null;
+        String query = "SELECT * from t_degustacion " +
+                "where id_plato_comida = " + id_plato;
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor != null) {
+            cursor.moveToFirst();
+            try {
+                @SuppressLint("Range") Integer id = cursor.getInt(cursor.getColumnIndex("id"));
+                @SuppressLint("Range") String username = cursor.getString(cursor.getColumnIndex("Username"));
+                // @SuppressLint("Range") String id_plato = cursor.getInt(cursor.getColumnIndex("id_plato"));
+                @SuppressLint("Range") String calificacion = cursor.getString(cursor.getColumnIndex("Calificacion"));
+                des = new Degustacion(id, username, id_plato, calificacion);
+                return des;
+            } catch (Exception e) {
+                return null;
+            }
+        }
+        return des;
+    }
+}
