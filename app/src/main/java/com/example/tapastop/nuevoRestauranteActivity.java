@@ -45,7 +45,7 @@ public class nuevoRestauranteActivity extends AppCompatActivity {
         });
 
         cancelar = findViewById(R.id.cancelarNDBtn2);
-        guardar.setOnClickListener(new View.OnClickListener() {
+        cancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(nuevoRestauranteActivity.this, MainActivity2.class);

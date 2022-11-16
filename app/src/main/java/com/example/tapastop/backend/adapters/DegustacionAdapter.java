@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -25,7 +26,7 @@ public class DegustacionAdapter extends RecyclerView.Adapter<DegustacionAdapter.
     @NonNull
     @Override
     public DegustacionAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_list_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_list_item_degustaciones, parent, false);
 
         // Passing view to ViewHolder
         DegustacionAdapter.ViewHolder viewHolder = new DegustacionAdapter.ViewHolder(view);
@@ -36,22 +37,27 @@ public class DegustacionAdapter extends RecyclerView.Adapter<DegustacionAdapter.
         //int res = (int) degustaciones.get(position).get;
         //holder.images.setImageResource(res);
         holder.plato.setText(degustaciones.get(position).getId_plato()+"");
+        holder.rating.setRating(Integer.parseInt(degustaciones.get(position).getCalificacion()));
+        //holder.rating.setRating((float)3.5);
         //holder.restaurante.setText("un restaurante");
     }
+
     @Override
     public int getItemCount() {
         return degustaciones.size();
     }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView images;
         TextView plato;
         TextView restaurante;
 
+        RatingBar rating;
+
         public ViewHolder(View view) {
             super(view);
-            images = itemView.findViewById(R.id.image);
             plato = itemView.findViewById(R.id.plato);
             restaurante = itemView.findViewById(R.id.restaurante);
+            rating = (RatingBar) itemView.findViewById(R.id.ratingBar);
         }
     }
 }

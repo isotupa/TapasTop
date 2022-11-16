@@ -34,6 +34,8 @@ public class LoginActivity extends AppCompatActivity {
     - Modificar degustación
     - Búsqueda de degustaciones?
     - Conseguir niveles de galardones
+    - Sacar número de plato a partir de ID
+    - Sacar nombre de restaurante a partir de ID de plato
      */
 
     @Override

@@ -118,7 +118,7 @@ public class Modelo {
     public boolean crearDegustacion(Degustacion degustacion){
         ContentValues values = new ContentValues();
         values.put("id", degustacion.getId());
-        values.put("Nombre", degustacion.getUsername());
+        values.put("Username", degustacion.getUsername());
         values.put("id_Plato_comida",degustacion.getId_plato());
         values.put("Calificacion",degustacion.getCalificacion());
         db.insert("t_degustacion",null,values);

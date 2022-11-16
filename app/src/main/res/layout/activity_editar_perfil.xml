@@ -37,10 +37,10 @@
         android:hint="Apellido 1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.547"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/nombreEPEdit"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.104" />
+        app:layout_constraintVertical_bias="0.103" />
 
     <EditText
         android:id="@+id/ap2EPEdit"
@@ -49,8 +49,8 @@
         android:hint="Apellido 2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.913"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.475"
+        app:layout_constraintStart_toEndOf="@+id/ap1EPEdit"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.103" />
 
@@ -61,10 +61,10 @@
         android:hint="E-mail"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.104"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/cambiarUsernameEPBtn"
         app:layout_constraintTop_toBottomOf="@+id/cambiarUsernameEPBtn"
-        app:layout_constraintVertical_bias="0.028" />
+        app:layout_constraintVertical_bias="0.026" />
 
     <EditText
         android:id="@+id/ubiEPEdit"
@@ -73,8 +73,8 @@
         android:hint="Ubicación"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.113"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/cambiarUsernameEPBtn"
         app:layout_constraintTop_toBottomOf="@+id/cambiarUsernameEPBtn"
         app:layout_constraintVertical_bias="0.146" />
 
@@ -85,8 +85,8 @@
         android:hint="Género"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.106"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/cambiarUsernameEPBtn"
         app:layout_constraintTop_toBottomOf="@+id/cambiarUsernameEPBtn"
         app:layout_constraintVertical_bias="0.262" />
 
@@ -128,13 +128,16 @@
 
     <Button
         android:id="@+id/borrarPerfilEPBtn"
+        style="@style/Widget.MaterialComponents.Button"
         android:layout_width="331dp"
         android:layout_height="53dp"
+        android:background="#AA2C2C"
+        android:backgroundTint="#632020"
         android:text="Eliminar perfil"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/guardarEPBtn"
         app:layout_constraintHorizontal_bias="0.462"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/cancelarEPBtn"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.955" />
 
@@ -146,10 +149,11 @@
         android:gravity="start|top"
         android:hint="Biografía"
         android:inputType="textMultiLine"
+        android:textAlignment="textStart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/cambiarUsernameEPBtn"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.699" />
 
