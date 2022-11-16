@@ -9,18 +9,19 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.tapastop.Entidades.Restaurante;
 import com.example.tapastop.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class RestauranteAdapter extends RecyclerView.Adapter<RestauranteAdapter.ViewHolder>{
-    ArrayList Img, Name;
+    List<Restaurante> restaurantes;
     //Context context;
 
     // Constructor for initialization
-    public RestauranteAdapter(ArrayList Img, ArrayList Name) {
-        this.Img = Img;
-        this.Name = Name;
+    public RestauranteAdapter(List<Restaurante> restaurantes) {
+        this.restaurantes = restaurantes;
     }
     @NonNull
     @Override
@@ -33,22 +34,21 @@ public class RestauranteAdapter extends RecyclerView.Adapter<RestauranteAdapter.
     }
     @Override
     public void onBindViewHolder(@NonNull RestauranteAdapter.ViewHolder holder, int position) {
-        int res = (int) Img.get(position);
-        holder.images.setImageResource(res);
-        holder.text.setText(Name.get(position)+"");
+        holder.text.setText(restaurantes.get(position).getNombre()+"");
+        holder.dir.setText(restaurantes.get(position).getDireccion()+"");
     }
     @Override
     public int getItemCount() {
-        return Img.size();
+        return restaurantes.size();
     }
     public class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView images;
         TextView text;
+        TextView dir;
 
         public ViewHolder(View view) {
             super(view);
-            images = itemView.findViewById(R.id.image);
             text = itemView.findViewById(R.id.plato);
+            dir = itemView.findViewById(R.id.plato2);
         }
     }
 }

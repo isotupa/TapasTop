@@ -55,7 +55,7 @@ public class DashboardFragment extends Fragment {
         recyclerView.setLayoutManager(linearLayoutManager);
 
         // Sending reference and data to DegustacionAdapter
-        RestauranteAdapter adapter = new RestauranteAdapter(Img, Name);
+        RestauranteAdapter adapter = new RestauranteAdapter(c.listarRestaurantes(""));
 
         // Setting DegustacionAdapter to RecyclerView
         recyclerView.setAdapter(adapter);
