@@ -172,8 +172,22 @@ public class Modelo {
     }
 
     public Restaurante get_Restaurante(Integer id_plato) {
-
-        return null;
+        Restaurante res = null;
+        String query = "SELECT * from t_restaurante where nombre = " +
+                "(Select nombre from t_plato_comida where id = " + id_plato + ")";
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor != null) {
+            cursor.moveToFirst();
+            try {
+                @SuppressLint("Range") String nombre = cursor.getString(cursor.getColumnIndex("Nombre"));
+                @SuppressLint("Range") String direccion = cursor.getString(cursor.getColumnIndex("Direccion"));
+                res = new Restaurante(nombre,direccion);
+                return res;
+            } catch (Exception e) {
+                return null;
+            }
+        }
+        return res;
     }
 
     public Degustacion get_Degustacion(Integer id_plato) {
@@ -196,4 +210,5 @@ public class Modelo {
         }
         return des;
     }
+
 }

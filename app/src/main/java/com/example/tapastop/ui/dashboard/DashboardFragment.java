@@ -34,13 +34,6 @@ public class DashboardFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
 
         RecyclerView recyclerView;
-        ArrayList Img = new ArrayList<>(Arrays.asList(R.drawable.burger_king_410x282, R.drawable.iconmonstr_question_thin,
-                R.drawable.iconmonstr_question_thin, R.drawable.el_jardin_de_la_maquina_44_1_81582,
-                R.drawable.iconmonstr_question_thin, R.drawable.iconmonstr_question_thin, R.drawable.iconmonstr_question_thin
-                , R.drawable.iconmonstr_question_thin, R.drawable.iconmonstr_question_thin));
-        ArrayList Name = new ArrayList<>(Arrays.asList("Burger King", "La tagliatella", "VIPS",
-                "El Jardín de la máquina", "Tierra", "Cosa", "McDonalds", "Zen", "Forrest"));
-
         Controlador c = new Controlador(getContext());
 
         binding = FragmentDashboardBinding.inflate(inflater, container, false);
