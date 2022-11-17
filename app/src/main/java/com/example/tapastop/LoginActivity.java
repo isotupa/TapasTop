@@ -3,6 +3,7 @@ package com.example.tapastop;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -48,19 +49,19 @@ public class LoginActivity extends AppCompatActivity {
 
         Controlador c = new Controlador(this.findViewById(android.R.id.content).getRootView().getContext());
 
-        email = (EditText)findViewById(R.id.emailLoginTxtEdit);
-        pw = (EditText)findViewById(R.id.pwLoginTextEdit);
+        email = (EditText) findViewById(R.id.emailLoginTxtEdit);
+        pw = (EditText) findViewById(R.id.pwLoginTextEdit);
 
-        login =(Button)findViewById(R.id.loginLoginBtn);
+        login = (Button) findViewById(R.id.loginLoginBtn);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(String.valueOf(email.getText()).isEmpty()) {
-                    Toast.makeText(getApplicationContext(), "Pon un nombre",Toast.LENGTH_LONG).show();
-                } else if(String.valueOf(pw.getText()).isEmpty()) {
-                    Toast.makeText(getApplicationContext(), "Pon una contraseña",Toast.LENGTH_LONG).show();
-                } else if(!c.login(String.valueOf(email.getText()),String.valueOf(pw.getText()))) {
-                    Toast.makeText(getApplicationContext(), "E-mail o contraseña incorrectos",Toast.LENGTH_LONG).show();
+                if (String.valueOf(email.getText()).isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "Pon un nombre", Toast.LENGTH_LONG).show();
+                } else if (String.valueOf(pw.getText()).isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "Pon una contraseña", Toast.LENGTH_LONG).show();
+                } else if (!c.login(String.valueOf(email.getText()), String.valueOf(pw.getText()))) {
+                    Toast.makeText(getApplicationContext(), "E-mail o contraseña incorrectos", Toast.LENGTH_LONG).show();
                 } else {
                     c.activo = c.getUsuario(String.valueOf(email.getText()));
                     Intent intent = new Intent(LoginActivity.this, MainActivity2.class);
@@ -69,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        forgotPw =(Button)findViewById(R.id.forgotPwLoginBtn);
+        forgotPw = (Button) findViewById(R.id.forgotPwLoginBtn);
         forgotPw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,7 +79,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        crearCuenta =(Button)findViewById(R.id.crearCuentaLoginBtn);
+        crearCuenta = (Button) findViewById(R.id.crearCuentaLoginBtn);
         crearCuenta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -105,5 +106,20 @@ public class LoginActivity extends AppCompatActivity {
         Modelo.crearPlatoComida(p3);
 */
 
+        // ATTENTION: This was auto-generated to handle app links.
+        Intent appLinkIntent = getIntent();
+        String appLinkAction = appLinkIntent.getAction();
+        Uri appLinkData = appLinkIntent.getData();
+    }
+
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        handleIntent(intent);
+    }
+
+    private void handleIntent(Intent intent) {
+        String appLinkAction = intent.getAction();
+        Uri appLinkData = intent.getData();
+        Toast.makeText(getApplicationContext(), "Usuario verificado!ºKurger", Toast.LENGTH_LONG).show();
     }
 }

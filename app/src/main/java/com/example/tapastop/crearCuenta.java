@@ -82,7 +82,7 @@ public class crearCuenta extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "El formato del email no es correcto",Toast.LENGTH_LONG).show();
                 } else if(!String.valueOf(edad.getText()).matches(DATE_REGEX)) {
                     Toast.makeText(getApplicationContext(), "Introduce una fecha válida",Toast.LENGTH_LONG).show();
-                } else if(!String.valueOf(edad.getText()).matches(DATE_REGEX)) {
+                } else if(String.valueOf(edad.getText()).matches(DATE_REGEX)) {
                     String[] res = edad.getText().toString().split("/");
                     int dia = Integer.parseInt(res[0]);
                     int mes = Integer.parseInt(res[1]);
@@ -93,6 +93,13 @@ public class crearCuenta extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Debes tener por lo menos 18 años",Toast.LENGTH_LONG).show();
                     } else {
                         anyos = 2022 - ano;
+                        Usuario u = new Usuario(String.valueOf(username.getText()), String.valueOf(password2.getText()),
+                                anyos + "", String.valueOf(email.getText()));
+                        c.crearCuenta(u);
+                        c.activo = u;
+                        //startActivity(new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:" + String.valueOf(email.getText()))));
+                        Intent intent = new Intent(crearCuenta.this, crearCuenta2.class);
+                        startActivity(intent);
                     }
                 } else {
                     Usuario u = new Usuario(String.valueOf(username.getText()), String.valueOf(password2.getText()),
