@@ -89,10 +89,20 @@ public class Modelo {
                 @SuppressLint("Range") String passw = cursor.getString(cursor.getColumnIndex("Password"));
                 @SuppressLint("Range") String edad = cursor.getString(cursor.getColumnIndex("Edad"));
                 @SuppressLint("Range") String email = cursor.getString(cursor.getColumnIndex("Email"));
+                @SuppressLint("Range") String nombre = cursor.getString(cursor.getColumnIndex("Nombre"));
+                @SuppressLint("Range") String ap1 = cursor.getString(cursor.getColumnIndex("Apellido1"));
+                @SuppressLint("Range") String ap2 = cursor.getString(cursor.getColumnIndex("Apellido2"));
+                @SuppressLint("Range") String ciudad = cursor.getString(cursor.getColumnIndex("Ciudad"));
+                @SuppressLint("Range") String info = cursor.getString(cursor.getColumnIndex("Info"));
                 res.setUsername(username);
                 res.setEdad(edad);
                 res.setPassword(passw);
                 res.setEmail(email);
+                res.setNombre(nombre);
+                res.setAp1(ap1);
+                res.setAp2(ap2);
+                res.setUbi(ciudad);
+                res.setBio(info);
                 return res;
             } catch (Exception e) {
                 return null;

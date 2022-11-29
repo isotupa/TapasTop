@@ -15,10 +15,28 @@ import java.util.List;
 public class Controlador {
     private Modelo modelo;
     public static Usuario activo;
+    private static String user_a;
     public static Restaurante resActual;
+
+    public static String getUser_a() {
+        return Controlador.user_a;
+    }
+
+    public static void setUser_a(String user_a) {
+        Controlador.user_a = user_a;
+    }
 
     public Controlador(Context c){
         this.modelo = new Modelo(c);
+        Controlador.activo = new Usuario();
+    }
+
+    public static Usuario getActivo() {
+        return activo;
+    }
+
+    public static void setActivo(Usuario activo) {
+        Controlador.activo = activo;
     }
 
     public boolean crearCuenta(Usuario usuario){

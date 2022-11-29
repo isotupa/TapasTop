@@ -9,8 +9,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.tapastop.Entidades.Usuario;
 import com.example.tapastop.backend.sqlte.Controlador;
 import com.example.tapastop.ui.ayuda.AyudaFragment;
 
@@ -20,8 +22,8 @@ public class EditarPerfilActivity extends AppCompatActivity {
     Button guardar;
     Button eliminar;
 
-    EditText nombre;
-    EditText ap1, ap2, username, email, ubi, genero, bio;
+    TextView nombre;
+    TextView ap1, ap2, username, email, ubi, genero, bio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,15 +41,16 @@ public class EditarPerfilActivity extends AppCompatActivity {
         genero = findViewById(R.id.sexoEPEdit);
         bio = findViewById(R.id.bioEPEdit);
 
-        nombre.setText(c.activo.getNombre());
-        ap1.setText(c.activo.getAp1());
-        ap2.setText(c.activo.getAp2());
-        username.setText(c.activo.getUsername());
-        email.setText(c.activo.getEmail());
-        ubi.setText(c.activo.getUbi());
+        Usuario user = c.getUsuario(c.getUser_a());
+        nombre.setText(user.getNombre());
+        ap1.setText(user.getAp1());
+        ap2.setText(user.getAp2());
+        username.setText(user.getUsername());
+        email.setText(user.getEmail());
+        ubi.setText(user.getUbi());
         //genero.setText(c.activo.get());
-        bio.setText(c.activo.getBio());
-
+        bio.setText(user.getBio());
+        System.out.println("ESTE ES MI LOGIN" +user.getNombre());
 
         cancelar =(Button)findViewById(R.id.cancelarEPBtn);
         cancelar.setOnClickListener(new View.OnClickListener() {
@@ -62,20 +65,22 @@ public class EditarPerfilActivity extends AppCompatActivity {
         guardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                c.activo.setNombre(nombre.getText().toString());
-                c.activo.setAp1(ap1.getText().toString());
-                c.activo.setAp2(ap2.getText().toString());
-                c.activo.setUsername(username.getText().toString());
-                c.activo.setEmail(email.getText().toString());
-                c.activo.setUbi(ubi.getText().toString());
-                c.activo.setBio(bio.getText().toString());
-
-                //c.crearCuenta2(c.activo);
+                Usuario temporal = new Usuario();
+                temporal.setNombre(nombre.getText().toString());
+                temporal.setAp1(ap1.getText().toString());
+                temporal.setAp2(ap2.getText().toString());
+                temporal.setUsername(username.getText().toString());
+                temporal.setEmail(email.getText().toString());
+                temporal.setUbi(ubi.getText().toString());
+                temporal.setBio(bio.getText().toString());
+                c.crearCuenta2(temporal);
+                //c.setActivo(temporal);
 
                 //c.activo = c.getUsuario(username.getText().toString());
 
                 Intent intent = new Intent(EditarPerfilActivity.this, MainActivity2.class);
                 startActivity(intent);
+
             }
         });
 
@@ -90,7 +95,7 @@ public class EditarPerfilActivity extends AppCompatActivity {
                         .setCancelable(false)
                         .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                c.borrar_usuario(c.activo);
+                                c.borrar_usuario(c.getActivo());
                                 Toast.makeText(getApplicationContext(), "Cuenta borrada",Toast.LENGTH_LONG).show();
                                 Intent intent = new Intent(EditarPerfilActivity.this, LoginActivity.class);
                                 startActivity(intent);

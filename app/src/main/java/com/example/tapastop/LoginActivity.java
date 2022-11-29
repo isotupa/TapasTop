@@ -63,7 +63,12 @@ public class LoginActivity extends AppCompatActivity {
                 } else if (!c.login(String.valueOf(email.getText()), String.valueOf(pw.getText()))) {
                     Toast.makeText(getApplicationContext(), "E-mail o contraseña incorrectos", Toast.LENGTH_LONG).show();
                 } else {
-                    c.activo = c.getUsuario(String.valueOf(email.getText()));
+                    //c.activo = c.getUsuario(String.valueOf(email.getText()));
+                    c.getActivo().setUsername(email.getText().toString());
+                    //c.getActivo(set)
+                    //c.setActivo(c.getUsuario(email.getText().toString()));
+                    c.setUser_a(email.getText().toString());
+                    //System.out.println("ESTE ES MI LOGIN2" +c.getActivo().getUsername());
                     Intent intent = new Intent(LoginActivity.this, MainActivity2.class);
                     startActivity(intent);
                 }
