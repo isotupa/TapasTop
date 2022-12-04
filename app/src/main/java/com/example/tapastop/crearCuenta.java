@@ -76,6 +76,8 @@ public class crearCuenta extends AppCompatActivity {
 
                 if(String.valueOf(username.getText()).isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Pon un nombre válido",Toast.LENGTH_LONG).show();
+                } else if(c.getUsuario(username.getText().toString()) != null) {
+                    Toast.makeText(getApplicationContext(), "¡Este nombre de cuenta ya existe!",Toast.LENGTH_LONG).show();
                 } else if(!String.valueOf(password1.getText()).equals(String.valueOf(password2.getText()))) {
                     Toast.makeText(getApplicationContext(), "Las contraseñas no coinciden",Toast.LENGTH_LONG).show();
                 } else if(!String.valueOf(email.getText()).matches(EMAIL_REGEX)) {
@@ -87,7 +89,7 @@ public class crearCuenta extends AppCompatActivity {
                     int dia = Integer.parseInt(res[0]);
                     int mes = Integer.parseInt(res[1]);
                     int ano = Integer.parseInt(res[2]);
-                    if((dia < 0 || dia > 31) || (mes < 0 || mes > 12) || (ano < 0 || ano > 2022)) {
+                    if((dia < 0 || dia > 31) || (mes < 0 || mes > 12) || (ano < 1900 || ano > 2022)) {
                         Toast.makeText(getApplicationContext(), "Introduce una fecha válida",Toast.LENGTH_LONG).show();
                     } else if (ano > 2004) {
                         Toast.makeText(getApplicationContext(), "Debes tener por lo menos 18 años",Toast.LENGTH_LONG).show();

@@ -111,7 +111,6 @@ public class LoginActivity extends AppCompatActivity {
         Modelo.crearPlatoComida(p3);
 */
 
-        // ATTENTION: This was auto-generated to handle app links.
         Intent appLinkIntent = getIntent();
         String appLinkAction = appLinkIntent.getAction();
         Uri appLinkData = appLinkIntent.getData();
@@ -125,6 +124,6 @@ public class LoginActivity extends AppCompatActivity {
     private void handleIntent(Intent intent) {
         String appLinkAction = intent.getAction();
         Uri appLinkData = intent.getData();
-        Toast.makeText(getApplicationContext(), "Usuario verificado!ºKurger", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Usuario verificado!", Toast.LENGTH_LONG).show();
     }
 }

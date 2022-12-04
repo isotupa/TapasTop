@@ -65,21 +65,26 @@ public class EditarPerfilActivity extends AppCompatActivity {
         guardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Usuario temporal = new Usuario();
-                temporal.setNombre(nombre.getText().toString());
-                temporal.setAp1(ap1.getText().toString());
-                temporal.setAp2(ap2.getText().toString());
-                temporal.setUsername(username.getText().toString());
-                temporal.setEmail(email.getText().toString());
-                temporal.setUbi(ubi.getText().toString());
-                temporal.setBio(bio.getText().toString());
-                c.crearCuenta2(temporal);
-                //c.setActivo(temporal);
+                if(c.getUsuario(username.getText().toString()) == null) {
+                    Toast.makeText(getApplicationContext(), "¡Este nombre de cuenta ya existe!",Toast.LENGTH_LONG).show();
+                } else {
+                    Usuario temporal = new Usuario();
+                    temporal.setNombre(nombre.getText().toString());
+                    temporal.setAp1(ap1.getText().toString());
+                    temporal.setAp2(ap2.getText().toString());
+                    temporal.setUsername(username.getText().toString());
+                    temporal.setEmail(email.getText().toString());
+                    temporal.setUbi(ubi.getText().toString());
+                    temporal.setBio(bio.getText().toString());
+                    c.crearCuenta2(temporal);
+                    //c.setActivo(temporal);
 
-                //c.activo = c.getUsuario(username.getText().toString());
+                    //c.activo = c.getUsuario(username.getText().toString());
 
-                Intent intent = new Intent(EditarPerfilActivity.this, MainActivity2.class);
-                startActivity(intent);
+                    Intent intent = new Intent(EditarPerfilActivity.this, MainActivity2.class);
+                    startActivity(intent);
+                }
+
 
             }
         });

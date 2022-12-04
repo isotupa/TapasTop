@@ -33,7 +33,7 @@ public class PlatoAdapter extends RecyclerView.Adapter<PlatoAdapter.ViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull PlatoAdapter.ViewHolder holder, int position) {
         holder.text.setText(platos.get(position).getNombre()+"");
-        holder.dir.setText(platos.get(position).getRestaurante()+"");
+        //holder.dir.setText(platos.get(position).getRestaurante()+"");
     }
 
     @Override
@@ -43,12 +43,12 @@ public class PlatoAdapter extends RecyclerView.Adapter<PlatoAdapter.ViewHolder>{
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView text;
-        TextView dir;
+        //TextView dir;
 
         public ViewHolder(View view) {
             super(view);
             text = itemView.findViewById(R.id.plato);
-            dir = itemView.findViewById(R.id.plato2);
+            //dir = itemView.findViewById(R.id.plato2);
         }
     }
 }

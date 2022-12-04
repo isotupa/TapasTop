@@ -11,19 +11,33 @@
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@drawable/iconmonstr_eat_3"
+        android:isScrollContainer="false"
         android:label="@string/app_name"
         android:roundIcon="@drawable/iconmonstr_eat_3"
         android:supportsRtl="true"
         android:theme="@style/Theme.TapasTop"
-        android:windowSoftInputMode="adjustNothing"
+        android:windowSoftInputMode="adjustPan"
         tools:targetApi="31">
+        <activity
+            android:name=".AyudaActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".RestaurantScreenActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".NuevoPlatoActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
-
         </activity>
         <activity
             android:name=".list_item_plato"
@@ -111,6 +125,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

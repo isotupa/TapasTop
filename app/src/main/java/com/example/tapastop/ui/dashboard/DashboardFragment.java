@@ -5,8 +5,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -54,6 +56,25 @@ public class DashboardFragment extends Fragment {
         recyclerView.setAdapter(adapter);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
+        sd.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                RestauranteAdapter adapter = new RestauranteAdapter(c.listarRestaurantes(query));
+                if(adapter.getItemCount() > 0){
+                    recyclerView.setAdapter(adapter);
+                }else{
+                    Toast.makeText(getContext(), "No existen restaurantes con ese nombre",Toast.LENGTH_LONG).show();
+                    recyclerView.setAdapter(adapter);
+                }
+                return false;
+            }
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                //adapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+
         nuevo = root.findViewById(R.id.nuevoRestaurante);
         nuevo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,7 +83,6 @@ public class DashboardFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
 
         //sd.getQuery()
 
