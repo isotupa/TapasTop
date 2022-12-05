@@ -35,7 +35,7 @@ public class crearCuenta2 extends AppCompatActivity {
 
     public static final int GET_FROM_GALLERY = 3;
 
-    //Controlador c;
+    Controlador c;
     Usuario u;
 
     @Override
@@ -49,6 +49,9 @@ public class crearCuenta2 extends AppCompatActivity {
         ubi =(EditText) findViewById(R.id.ubiCCTxtEdit);
         info =(EditText) findViewById(R.id.bioCCTxtEdit);
 
+        c = new Controlador(this.findViewById(android.R.id.content).getRootView().getContext());
+        u = c.getUsuario(getIntent().getExtras().get("username").toString());
+
         img = findViewById(R.id.fotoPerfilCCImgBtn);
         img.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,8 +60,6 @@ public class crearCuenta2 extends AppCompatActivity {
             }
         });
 
-        Controlador c = new Controlador(this.findViewById(android.R.id.content).getRootView().getContext());
-        u = c.getUsuario(getIntent().getExtras().get("username").toString());
 
         volver =(Button)findViewById(R.id.volverCC2Btn);
         volver.setOnClickListener(new View.OnClickListener() {
@@ -100,8 +101,8 @@ public class crearCuenta2 extends AppCompatActivity {
                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
                 bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
                 byte[] byteArray = stream.toByteArray();
-                bitmap.recycle();
                 u.setFoto(byteArray);
+                c.crearCuenta2(u);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             } catch (IOException e) {

@@ -5,6 +5,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.example.tapastop.Entidades.Degustacion;
 import com.example.tapastop.Entidades.Plato_comida;
@@ -225,9 +226,10 @@ public class Modelo {
     // Un método al que le pases un restaurante y te devuelva una lista de sus platos
     public List<Plato_comida> get_platos_restaurante(String restaurante) {
         List<Plato_comida> platos = new ArrayList<Plato_comida>();
-        String query = "Select * from t_plato_comida where restaurante = ' " + restaurante + "'";
+        String query = "Select * from t_plato_comida where restaurante = '"+ restaurante + "'";
         Cursor cursor = db.rawQuery(query, null);
         if (cursor != null) {
+            //System.out.println("cond: " + cursor.moveToFirst());
             while (cursor.moveToNext()) {
                 try {
                     @SuppressLint("Range") Integer id = cursor.getInt(cursor.getColumnIndex("id"));
@@ -239,10 +241,13 @@ public class Modelo {
                     Plato_comida plato = new Plato_comida(id,nombre,tipo_comida,region,sabor, restaurante);
                     plato.setDescripcion(descripcion);
                     platos.add(plato);
+                    System.out.println("asd"+ nombre);
                 } catch (Exception e) {
                     return null;
                 }
             }
+            //platos.add(new Plato_comida(90, "papas","eeuu", "eeuu", "eeuu", "MacDonalds"));
+            cursor.close();
             return platos;
         }
         return platos;

@@ -84,7 +84,7 @@ public class RestaurantScreenActivity extends AppCompatActivity {
         listaDegustaciones.add(new Plato_comida(4, "fgh", "Estadounidense", "EEUU", "Normal", "Kuger Bing"));
 
         PlatoAdapter adapter = new PlatoAdapter(c.get_platos_restaurante(getIntent().getExtras().get("restaurantName").toString()));
-        address.setText(getIntent().getExtras().get("restaurantName").toString());
+        //address.setText(getIntent().getExtras().get("restaurantName").toString());
         //PlatoAdapter adapter = new PlatoAdapter(listaDegustaciones);
         //PlatoEvaluableAdapter adapter = new PlatoEvaluableAdapter(c.get_platos_restaurante(getIntent().getExtras().get("restaurantName") + ""));
 
