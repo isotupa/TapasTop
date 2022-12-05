@@ -38,7 +38,9 @@ public class Database extends SQLiteOpenHelper {
                 "Info TEXT )");
         sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_RESTAURANTE+"(" +
                 "Nombre TEXT PRIMARY KEY UNIQUE," +
-                "Direccion TEXT NOT NULL)");
+                "Username TEXT  NOT NULL," +
+                "Direccion TEXT NOT NULL,"+
+                "FOREIGN KEY(Username) REFERENCES TABLE_USUARIOS(Username))");
         sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_PLATO_COMIDA +"(" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "Nombre TEXT NOT NULL,"+

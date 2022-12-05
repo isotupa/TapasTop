@@ -43,6 +43,7 @@ public class Modelo {
         values.put("Nombre", usuario.getNombre());
         values.put("Apellido1", usuario.getAp1());
         values.put("Apellido2", usuario.getAp2());
+        values.put("Foto",usuario.getFoto());
         values.put("Ciudad", usuario.getUbi());
         values.put("Info", usuario.getBio());
         String selection = "Username LIKE ?";
