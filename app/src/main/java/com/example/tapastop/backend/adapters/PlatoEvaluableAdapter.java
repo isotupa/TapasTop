@@ -10,18 +10,19 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tapastop.Entidades.Degustacion;
+import com.example.tapastop.Entidades.Plato_comida;
 import com.example.tapastop.R;
 
 import java.util.List;
 import java.util.Random;
 
 public class PlatoEvaluableAdapter extends RecyclerView.Adapter<PlatoEvaluableAdapter.ViewHolder>{
-    List<Degustacion> degustaciones;
+    List<Plato_comida> platos;
     //Context context;
 
     // Constructor for initialization
-    public PlatoEvaluableAdapter(List<Degustacion> degustaciones) {
-        this.degustaciones = degustaciones;
+    public PlatoEvaluableAdapter(List<Plato_comida> platos) {
+        this.platos = platos;
     }
     @NonNull
     @Override
@@ -41,14 +42,14 @@ public class PlatoEvaluableAdapter extends RecyclerView.Adapter<PlatoEvaluableAd
         holder.plato.setText(number+"");
         //holder.restaurante.setText(Modelo.get_Restaurante(degustaciones.get(position).getId_plato()).getNombre());
         holder.restaurante.setText("hai");
-        holder.rating.setRating(Integer.parseInt(degustaciones.get(position).getCalificacion()));
+        //holder.rating.setRating(Integer.parseInt(platos.get(position).getCalificacion()));
         //holder.rating.setRating((float)3.5);
         //holder.restaurante.setText("un restaurante");
     }
 
     @Override
     public int getItemCount() {
-        return degustaciones.size();
+        return platos.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

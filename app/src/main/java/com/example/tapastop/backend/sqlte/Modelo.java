@@ -223,9 +223,9 @@ public class Modelo {
         return des;
     }
     // Un método al que le pases un restaurante y te devuelva una lista de sus platos
-    public List<Plato_comida> get_platos_restaurante(Restaurante restaurante) {
+    public List<Plato_comida> get_platos_restaurante(String restaurante) {
         List<Plato_comida> platos = new ArrayList<Plato_comida>();
-        String query = "Select * from t_plato_comida where restaurante = ' " + restaurante.getNombre() + "'";
+        String query = "Select * from t_plato_comida where restaurante = ' " + restaurante + "'";
         Cursor cursor = db.rawQuery(query, null);
         if (cursor != null) {
             while (cursor.moveToNext()) {
@@ -236,7 +236,7 @@ public class Modelo {
                     @SuppressLint("Range") String region = cursor.getString(cursor.getColumnIndex("Region"));
                     @SuppressLint("Range") String sabor = cursor.getString(cursor.getColumnIndex("Sabor"));
                     @SuppressLint("Range") String descripcion = cursor.getString(cursor.getColumnIndex("Descripcion"));
-                    Plato_comida plato = new Plato_comida(id,nombre,tipo_comida,region,sabor, restaurante.getNombre());
+                    Plato_comida plato = new Plato_comida(id,nombre,tipo_comida,region,sabor, restaurante);
                     plato.setDescripcion(descripcion);
                     platos.add(plato);
                 } catch (Exception e) {
@@ -248,16 +248,16 @@ public class Modelo {
         return platos;
     }
     //Devuelve todas las degustaciones de un plato de comida
-    public List<Degustacion> listar_degustaciones_restaurante(Plato_comida plato) {
+    public List<Degustacion> listar_degustaciones_restaurante(int plato) {
         List<Degustacion> degustaciones = new ArrayList<Degustacion>();
-        String query = "SELECT * from  t_degustacion where id_PLato_comida = '" + plato.getId() + "'";
+        String query = "SELECT * from  t_degustacion where id_PLato_comida = '" + plato + "'";
         Cursor cursor = db.rawQuery(query, null);
         if (cursor != null) {
             while (cursor.moveToNext()) {
                 @SuppressLint("Range") Integer id = cursor.getInt(cursor.getColumnIndex("id"));
                 @SuppressLint("Range") String username = cursor.getString(cursor.getColumnIndex("Username"));
                 @SuppressLint("Range") String calificacion = cursor.getString(cursor.getColumnIndex("Calificacion"));
-                Degustacion degustacion = new Degustacion(id, username, plato.getId(), calificacion);
+                Degustacion degustacion = new Degustacion(id, username, plato, calificacion);
                 degustaciones.add(degustacion);
             }
             return degustaciones;
@@ -266,17 +266,19 @@ public class Modelo {
     }
 
 // Un método al q le pases un restaurante y te devuelva la media de sus valoraciones
-    public double valoracion_media_restaurante(Restaurante restaurante){
+    public double valoracion_media_restaurante(String restaurante){
         Integer media_res = 0;
         List<Plato_comida> platos = get_platos_restaurante(restaurante);
-        for (int i = 0 ; i < platos.size();i++){
-            int media_plato =0;
-            List<Degustacion> degustaciones = listar_degustaciones_restaurante(platos.get(i));
-            for(int j = 0; j < degustaciones.size();j++){
+        for (int i = 0 ; i < platos.size();i++) {
+            int media_plato = 0;
+            List<Degustacion> degustaciones = listar_degustaciones_restaurante(i);
+            if (degustaciones.size() == 0) return -1;
+            for (int j = 0; j < degustaciones.size(); j++) {
                 media_plato += Integer.parseInt(degustaciones.get(j).getCalificacion());
             }
-            media_res += (media_plato/degustaciones.size());
+            media_res += (media_plato / degustaciones.size());
         }
+        if(platos.size() == 0) return -1;
         media_res = (media_res/platos.size()) ;
         return  media_res;
     }

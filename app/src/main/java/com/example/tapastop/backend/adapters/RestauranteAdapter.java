@@ -24,6 +24,7 @@ import java.util.List;
 public class RestauranteAdapter extends RecyclerView.Adapter<RestauranteAdapter.ViewHolder>{
     List<Restaurante> restaurantes;
     //Context context;
+    public String dirs;
 
     // Constructor for initialization
     public RestauranteAdapter(List<Restaurante> restaurantes) {
@@ -44,6 +45,7 @@ public class RestauranteAdapter extends RecyclerView.Adapter<RestauranteAdapter.
     public void onBindViewHolder(@NonNull RestauranteAdapter.ViewHolder holder, int position) {
         holder.text.setText(restaurantes.get(position).getNombre()+"");
         holder.dir.setText(restaurantes.get(position).getDireccion()+"");
+        dirs = restaurantes.get(position).getDireccion()+"";
     }
 
     @Override
@@ -67,8 +69,8 @@ public class RestauranteAdapter extends RecyclerView.Adapter<RestauranteAdapter.
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(view.getContext(), RestaurantScreenActivity.class);
-                    intent.putExtra("restaurantName", text.getText());
-                    intent.putExtra("restaurantAddress", dir.getText());
+                    intent.putExtra("restaurantName", text.getText().toString());
+                    intent.putExtra("restaurantAddress", dirs);
                     view.getContext().startActivity(intent);
                 }
             });

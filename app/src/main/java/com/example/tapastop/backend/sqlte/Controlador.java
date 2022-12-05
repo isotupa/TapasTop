@@ -26,7 +26,7 @@ public class Controlador {
         Controlador.user_a = user_a;
     }
 
-    public Controlador(Context c){
+    public Controlador(Context c) {
         this.modelo = new Modelo(c);
         Controlador.activo = new Usuario();
     }
@@ -39,18 +39,20 @@ public class Controlador {
         Controlador.activo = activo;
     }
 
-    public boolean crearCuenta(Usuario usuario){
+    public boolean crearCuenta(Usuario usuario) {
         modelo.crearCuenta(usuario);
         return true;
     }
-    public boolean crearCuenta2(Usuario usuario){
+
+    public boolean crearCuenta2(Usuario usuario) {
         return modelo.crearCuenta2(usuario);
     }
+
     public boolean login(String username, String pw) {
         return modelo.login(username, pw);
     }
 
-    public boolean borrar_usuario(Usuario username){
+    public boolean borrar_usuario(Usuario username) {
         return modelo.borrar_usuario(username);
     }
 
@@ -58,19 +60,35 @@ public class Controlador {
         return modelo.getUsuario(username);
     }
 
-    public boolean crearRestaurante(Restaurante restaurante){
+    public boolean crearRestaurante(Restaurante restaurante) {
         return modelo.crearRestaurante(restaurante);
     }
-    public boolean crearPlatoComida(Plato_comida plato_comida){
+
+    public boolean crearPlatoComida(Plato_comida plato_comida) {
         return modelo.crearPlatoComida(plato_comida);
     }
+
     public boolean crearDegustacion(Degustacion degustacion) {
         return modelo.crearDegustacion(degustacion);
     }
+
     public List<Restaurante> listarRestaurantes(String pattern) {
         return modelo.listar_restaurantes(pattern);
     }
+
     public List<Degustacion> listarDegustaciones(Usuario usuario) {
         return modelo.listar_degustaciones(usuario);
+    }
+
+    public double valoracion_media_restaurante(String restaurante) {
+        return modelo.valoracion_media_restaurante(restaurante);
+    }
+
+    public List<Degustacion> listar_degustaciones_restaurante(int plato) {
+        return modelo.listar_degustaciones_restaurante(plato);
+    }
+
+    public List<Plato_comida> get_platos_restaurante(String restaurante) {
+        return modelo.get_platos_restaurante(restaurante);
     }
 }

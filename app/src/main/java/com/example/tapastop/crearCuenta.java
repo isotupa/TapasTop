@@ -101,6 +101,7 @@ public class crearCuenta extends AppCompatActivity {
                         c.activo = u;
                         //startActivity(new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:" + String.valueOf(email.getText()))));
                         Intent intent = new Intent(crearCuenta.this, crearCuenta2.class);
+                        intent.putExtra("username", u.getUsername());
                         startActivity(intent);
                     }
                 } else {
@@ -110,6 +111,7 @@ public class crearCuenta extends AppCompatActivity {
                     c.activo = u;
                     //startActivity(new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:" + String.valueOf(email.getText()))));
                     Intent intent = new Intent(crearCuenta.this, crearCuenta2.class);
+                    intent.putExtra("username", u.getUsername());
                     startActivity(intent);
                 }
 

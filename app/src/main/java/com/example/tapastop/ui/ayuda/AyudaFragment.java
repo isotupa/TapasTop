@@ -16,6 +16,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.tapastop.AyudaActivity;
 import com.example.tapastop.EditarPerfilActivity;
 import com.example.tapastop.LoginActivity;
 import com.example.tapastop.R;
@@ -35,8 +36,6 @@ public class AyudaFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        //AyudaViewModel ayudaViewModel =
-                //new ViewModelProvider(this).get(AyudaViewModel.class);
 
         binding = FragmentAyudaBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
@@ -58,6 +57,16 @@ public class AyudaFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        ayuda =(Button)root.findViewById(R.id.ayudaAyudaBtn);
+        ayuda.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), AyudaActivity.class);
+                startActivity(intent);
+            }
+        });
+
         return root;
     }
 

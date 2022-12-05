@@ -15,6 +15,7 @@ import android.widget.ImageButton;
 import com.example.tapastop.Entidades.Usuario;
 import com.example.tapastop.backend.sqlte.Controlador;
 
+import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
@@ -30,8 +31,12 @@ public class crearCuenta2 extends AppCompatActivity {
     EditText info;
 
     ImageButton img;
+    byte[] sqlimg;
 
     public static final int GET_FROM_GALLERY = 3;
+
+    //Controlador c;
+    Usuario u;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +50,6 @@ public class crearCuenta2 extends AppCompatActivity {
         info =(EditText) findViewById(R.id.bioCCTxtEdit);
 
         img = findViewById(R.id.fotoPerfilCCImgBtn);
-
-        Controlador c = new Controlador(this.findViewById(android.R.id.content).getRootView().getContext());
-
         img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -55,7 +57,8 @@ public class crearCuenta2 extends AppCompatActivity {
             }
         });
 
-
+        Controlador c = new Controlador(this.findViewById(android.R.id.content).getRootView().getContext());
+        u = c.getUsuario(getIntent().getExtras().get("username").toString());
 
         volver =(Button)findViewById(R.id.volverCC2Btn);
         volver.setOnClickListener(new View.OnClickListener() {
@@ -70,7 +73,7 @@ public class crearCuenta2 extends AppCompatActivity {
         terminar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Usuario u = c.activo;
+                //Usuario u = c.activo;
                 u.setNombre(String.valueOf(nombre.getText()));
                 u.setAp1(String.valueOf(ap1.getText()));
                 u.setAp2(String.valueOf(ap2.getText()));
@@ -94,11 +97,14 @@ public class crearCuenta2 extends AppCompatActivity {
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImage);
                 img.setImageURI(selectedImage);
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                byte[] byteArray = stream.toByteArray();
+                bitmap.recycle();
+                u.setFoto(byteArray);
             } catch (FileNotFoundException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             } catch (IOException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         }

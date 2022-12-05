@@ -21,15 +21,15 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_width="409dp"
-        android:layout_height="630dp"
+        android:layout_width="404dp"
+        android:layout_height="597dp"
         android:layout_marginTop="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintHorizontal_bias="0.428"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchDash"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.042" />
 
     <Button
         android:id="@+id/nuevoRestaurante"

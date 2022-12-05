@@ -1,5 +1,7 @@
 package com.example.tapastop.ui.home;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.Icon;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -49,7 +51,13 @@ public class HomeFragment extends Fragment {
         degust.setText("Sin información");
         locales_nuevos.setText("Sin información");
         solicitudes.setText("Sin información");
-        foto.setImageResource(R.drawable.iconmonstr_error_filled);
+        if(u.getFoto() != null) {
+            byte[] blob = u.getFoto();
+            Bitmap bmp= BitmapFactory.decodeByteArray(blob,0,blob.length);
+            foto.setImageBitmap(bmp);
+        } else {
+            foto.setImageResource(R.drawable.iconmonstr_error_filled);
+        }
 
         return root;
     }
