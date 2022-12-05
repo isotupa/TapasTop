@@ -1,5 +1,7 @@
 package com.example.tapastop.Entidades;
 
+import android.media.Image;
+
 public class Usuario {
     private String username;
     private String password;
@@ -11,6 +13,7 @@ public class Usuario {
     private String ubi;
     private String bio;
     private String info;
+    private byte[] foto;
 
 
     public Usuario(String username,String password,String edad,String email){
@@ -21,6 +24,22 @@ public class Usuario {
     }
 
     public Usuario(){    }
+
+    public String getInfo() {
+        return info;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
+    }
+
+    public byte[] getFoto() {
+        return foto;
+    }
+
+    public void setFoto(byte[] foto) {
+        this.foto = foto;
+    }
 
     public String getNombre() {
         return nombre;

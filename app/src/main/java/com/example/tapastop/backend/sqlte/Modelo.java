@@ -93,6 +93,7 @@ public class Modelo {
                 @SuppressLint("Range") String ap1 = cursor.getString(cursor.getColumnIndex("Apellido1"));
                 @SuppressLint("Range") String ap2 = cursor.getString(cursor.getColumnIndex("Apellido2"));
                 @SuppressLint("Range") String ciudad = cursor.getString(cursor.getColumnIndex("Ciudad"));
+                @SuppressLint("Range") byte[] foto = cursor.getBlob(cursor.getColumnIndex("Foto"));
                 @SuppressLint("Range") String info = cursor.getString(cursor.getColumnIndex("Info"));
                 res.setUsername(username);
                 res.setEdad(edad);
@@ -103,6 +104,7 @@ public class Modelo {
                 res.setAp2(ap2);
                 res.setUbi(ciudad);
                 res.setBio(info);
+                res.setFoto(foto);
                 return res;
             } catch (Exception e) {
                 return null;
@@ -220,5 +222,62 @@ public class Modelo {
         }
         return des;
     }
+    // Un método al que le pases un restaurante y te devuelva una lista de sus platos
+    public List<Plato_comida> get_platos_restaurante(Restaurante restaurante) {
+        List<Plato_comida> platos = new ArrayList<Plato_comida>();
+        String query = "Select * from t_plato_comida where restaurante = ' " + restaurante.getNombre() + "'";
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor != null) {
+            while (cursor.moveToNext()) {
+                try {
+                    @SuppressLint("Range") Integer id = cursor.getInt(cursor.getColumnIndex("id"));
+                    @SuppressLint("Range") String nombre = cursor.getString(cursor.getColumnIndex("Nombre"));
+                    @SuppressLint("Range") String tipo_comida = cursor.getString(cursor.getColumnIndex("Tipo_comida"));
+                    @SuppressLint("Range") String region = cursor.getString(cursor.getColumnIndex("Region"));
+                    @SuppressLint("Range") String sabor = cursor.getString(cursor.getColumnIndex("Sabor"));
+                    @SuppressLint("Range") String descripcion = cursor.getString(cursor.getColumnIndex("Descripcion"));
+                    Plato_comida plato = new Plato_comida(id,nombre,tipo_comida,region,sabor, restaurante.getNombre());
+                    plato.setDescripcion(descripcion);
+                    platos.add(plato);
+                } catch (Exception e) {
+                    return null;
+                }
+            }
+            return platos;
+        }
+        return platos;
+    }
+    //Devuelve todas las degustaciones de un plato de comida
+    public List<Degustacion> listar_degustaciones_restaurante(Plato_comida plato) {
+        List<Degustacion> degustaciones = new ArrayList<Degustacion>();
+        String query = "SELECT * from  t_degustacion where id_PLato_comida = '" + plato.getId() + "'";
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor != null) {
+            while (cursor.moveToNext()) {
+                @SuppressLint("Range") Integer id = cursor.getInt(cursor.getColumnIndex("id"));
+                @SuppressLint("Range") String username = cursor.getString(cursor.getColumnIndex("Username"));
+                @SuppressLint("Range") String calificacion = cursor.getString(cursor.getColumnIndex("Calificacion"));
+                Degustacion degustacion = new Degustacion(id, username, plato.getId(), calificacion);
+                degustaciones.add(degustacion);
+            }
+            return degustaciones;
+        }
+        return degustaciones;
+    }
 
+// Un método al q le pases un restaurante y te devuelva la media de sus valoraciones
+    public double valoracion_media_restaurante(Restaurante restaurante){
+        Integer media_res = 0;
+        List<Plato_comida> platos = get_platos_restaurante(restaurante);
+        for (int i = 0 ; i < platos.size();i++){
+            int media_plato =0;
+            List<Degustacion> degustaciones = listar_degustaciones_restaurante(platos.get(i));
+            for(int j = 0; j < degustaciones.size();j++){
+                media_plato += Integer.parseInt(degustaciones.get(j).getCalificacion());
+            }
+            media_res += (media_plato/degustaciones.size());
+        }
+        media_res = (media_res/platos.size()) ;
+        return  media_res;
+    }
 }
