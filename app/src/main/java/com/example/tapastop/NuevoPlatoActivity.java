@@ -45,6 +45,7 @@ public class NuevoPlatoActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Random random = new Random();
                 int number = random.nextInt(100000);
+                // TODO int id = c.getIdPlato(getIntent().getExtras().get("restaurantName")+"", nombre.getText().toString());
                 Plato_comida plato = new Plato_comida(number, nombre.getText().toString(), tipo.getText().toString(),
                         region.getText().toString(), sabor.getText().toString(), getIntent().getExtras().get("restaurantName")+"");
                 c.crearPlatoComida(plato);

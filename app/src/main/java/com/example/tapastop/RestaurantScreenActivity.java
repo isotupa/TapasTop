@@ -26,9 +26,8 @@ public class RestaurantScreenActivity extends AppCompatActivity {
     TextView address;
     TextView average;
 
-    ImageView img;
-
     Button verCartaBtn;
+    Button volver;
 
     RecyclerView recyclerView;
 
@@ -44,12 +43,7 @@ public class RestaurantScreenActivity extends AppCompatActivity {
         average = findViewById(R.id.averageRestaurantTxtView);
 
         verCartaBtn = findViewById(R.id.verCartaBtn);
-
-        img = findViewById(R.id.restaurantPicImgView);
-
-        //if(getIntent().hasExtra("nombre")) name.setText(getIntent().getExtras().get("nombre").toString());
-        //if(getIntent().hasExtra("dir")) address.setText(getIntent().getExtras().get("dir").toString());
-
+        volver = findViewById(R.id.volverRSBtn);
 
         if(getIntent().hasExtra("restaurantName")) {
             name.setText(getIntent().getExtras().get("restaurantName") + "");
@@ -71,6 +65,14 @@ public class RestaurantScreenActivity extends AppCompatActivity {
             }
         });
 
+        volver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(RestaurantScreenActivity.this, MainActivity2.class);
+                startActivity(intent);
+            }
+        });
+
         // layout for vertical orientation
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(RestaurantScreenActivity.this);
         recyclerView.setLayoutManager(linearLayoutManager);
@@ -83,10 +85,10 @@ public class RestaurantScreenActivity extends AppCompatActivity {
         listaDegustaciones.add(new Plato_comida(3, "dg", "Estadounidense", "EEUU", "Normal", "Kuger Bing"));
         listaDegustaciones.add(new Plato_comida(4, "fgh", "Estadounidense", "EEUU", "Normal", "Kuger Bing"));
 
-        PlatoAdapter adapter = new PlatoAdapter(c.get_platos_restaurante(getIntent().getExtras().get("restaurantName").toString()));
+        //PlatoAdapter adapter = new PlatoAdapter(c.get_platos_restaurante(getIntent().getExtras().get("restaurantName").toString()));
         //address.setText(getIntent().getExtras().get("restaurantName").toString());
         //PlatoAdapter adapter = new PlatoAdapter(listaDegustaciones);
-        //PlatoEvaluableAdapter adapter = new PlatoEvaluableAdapter(c.get_platos_restaurante(getIntent().getExtras().get("restaurantName") + ""));
+        PlatoEvaluableAdapter adapter = new PlatoEvaluableAdapter(c.get_platos_restaurante(getIntent().getExtras().get("restaurantName") + ""));
 
         // Setting DegustacionAdapter to RecyclerView
         recyclerView.setAdapter(adapter);

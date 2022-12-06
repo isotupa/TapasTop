@@ -42,6 +42,12 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment:2.4.1'
     implementation 'androidx.navigation:navigation-ui:2.4.1'
     implementation 'com.google.android.gms:play-services-maps:18.1.0'
+    implementation files('libs/activation.jar')
+    implementation files('libs/additionnal.jar')
+    implementation files('libs/mail.jar')
+    //implementation files('/Users/kaizalk/AndroidStudioProjects/TapasTop2/app/libs/activation.jar')
+    //implementation files('/Users/kaizalk/AndroidStudioProjects/TapasTop2/app/libs/additional.jar')
+    //implementation files('/Users/kaizalk/AndroidStudioProjects/TapasTop2/app/libs/mail.jar')
     //noinspection GradleDependency
     testImplementation 'junit:junit:4.13.2'
     //noinspection GradleDependency

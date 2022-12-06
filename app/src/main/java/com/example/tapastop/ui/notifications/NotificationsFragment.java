@@ -55,7 +55,7 @@ public class NotificationsFragment extends Fragment {
         listaDegustaciones.add(new Degustacion(5, c.activo.getUsername(), 5, "3"));
         listaDegustaciones.add(new Degustacion(6, c.activo.getUsername(), 6, "4"));
         //DegustacionAdapter adapter = new DegustacionAdapter(listaDegustaciones);
-        DegustacionAdapter adapter = new DegustacionAdapter(c.listarDegustaciones(c.activo));
+        DegustacionAdapter adapter = new DegustacionAdapter(c.listarDegustaciones(c.getUsuario(c.getUser_a()).getUsername()));
 
         // Setting DegustacionAdapter to RecyclerView
         recyclerView.setAdapter(adapter);

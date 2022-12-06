@@ -34,18 +34,6 @@
         app:layout_constraintTop_toBottomOf="@+id/restaurantNameTxtView"
         app:layout_constraintVertical_bias="0.031" />
 
-    <ImageView
-        android:id="@+id/restaurantPicImgView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/restaurantAddressTxtView"
-        app:layout_constraintVertical_bias="0.087"
-        tools:srcCompat="@tools:sample/avatars" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView2"
         android:layout_width="329dp"
@@ -54,7 +42,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/verCartaBtn"
-        app:layout_constraintVertical_bias="0.652" />
+        app:layout_constraintVertical_bias="0.187" />
 
     <Button
         android:id="@+id/verCartaBtn"
@@ -63,19 +51,30 @@
         android:text="Añadir nuevo plato"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/restaurantPicImgView"
-        app:layout_constraintVertical_bias="0.046" />
+        app:layout_constraintTop_toBottomOf="@+id/restaurantAddressTxtView"
+        app:layout_constraintVertical_bias="0.063" />
 
     <TextView
         android:id="@+id/averageRestaurantTxtView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/restaurantAddressTxtView"
+        app:layout_constraintBottom_toBottomOf="@+id/restaurantNameTxtView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.366"
         app:layout_constraintStart_toEndOf="@+id/restaurantNameTxtView"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/restaurantNameTxtView"
         app:layout_constraintVertical_bias="0.687" />
+
+    <Button
+        android:id="@+id/volverRSBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Volver"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView2" />
 </androidx.constraintlayout.widget.ConstraintLayout>

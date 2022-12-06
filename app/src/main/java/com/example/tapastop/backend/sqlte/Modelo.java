@@ -168,16 +168,16 @@ public class Modelo {
         return restaurantes;
     }
 
-    public List listar_degustaciones(Usuario usuario) {
+    public List listar_degustaciones(String usuario) {
         List<Degustacion> degustaciones = new ArrayList<Degustacion>();
-        String query = "SELECT * from  t_degustacion where Username = '" + usuario.getUsername() + "'";
+        String query = "SELECT * from  t_degustacion where Username = '" + usuario + "'";
         Cursor cursor = db.rawQuery(query, null);
         if (cursor != null) {
             while (cursor.moveToNext()) {
                 @SuppressLint("Range") Integer id = cursor.getInt(cursor.getColumnIndex("id"));
                 @SuppressLint("Range") Integer id_plato_comida = cursor.getInt(cursor.getColumnIndex("id_Plato_comida"));
                 @SuppressLint("Range") String calificacion = cursor.getString(cursor.getColumnIndex("Calificacion"));
-                Degustacion degustacion = new Degustacion(id, usuario.getUsername(), id_plato_comida, calificacion);
+                Degustacion degustacion = new Degustacion(id, usuario, id_plato_comida, calificacion);
                 degustaciones.add(degustacion);
             }
             return degustaciones;
@@ -204,7 +204,7 @@ public class Modelo {
         return res;
     }
 
-    public Degustacion get_Degustacion(Integer id_plato) {
+    public static Degustacion get_Degustacion(Integer id_plato) {
         Degustacion des = null;
         String query = "SELECT * from t_degustacion " +
                 "where id_plato_comida = " + id_plato;
@@ -254,7 +254,7 @@ public class Modelo {
         return platos;
     }
     //Devuelve todas las degustaciones de un plato de comida
-    public List<Degustacion> listar_degustaciones_restaurante(int plato) {
+    public static List<Degustacion> listar_degustaciones_restaurante(int plato) {
         List<Degustacion> degustaciones = new ArrayList<Degustacion>();
         String query = "SELECT * from  t_degustacion where id_PLato_comida = '" + plato + "'";
         Cursor cursor = db.rawQuery(query, null);

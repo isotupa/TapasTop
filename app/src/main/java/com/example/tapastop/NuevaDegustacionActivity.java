@@ -5,14 +5,22 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
 import com.example.tapastop.Entidades.Degustacion;
+import com.example.tapastop.Entidades.Plato_comida;
+import com.example.tapastop.Entidades.Restaurante;
+import com.example.tapastop.Entidades.Usuario;
 import com.example.tapastop.backend.sqlte.Controlador;
 import com.example.tapastop.ui.notifications.NotificationsFragment;
+
+import java.util.List;
+import java.util.Random;
 
 public class NuevaDegustacionActivity extends AppCompatActivity {
 
@@ -21,8 +29,8 @@ public class NuevaDegustacionActivity extends AppCompatActivity {
     Button cancelar;
     Button guardar;
 
-    EditText restaurante;
-    EditText plato;
+    AutoCompleteTextView restaurante;
+    AutoCompleteTextView plato;
     RatingBar calificacion;
 
     @Override
@@ -37,6 +45,29 @@ public class NuevaDegustacionActivity extends AppCompatActivity {
         calificacion = findViewById(R.id.ratingBar2);
 
         Controlador c = new Controlador(this.findViewById(android.R.id.content).getRootView().getContext());
+        Usuario u = c.getUsuario(c.getUser_a());
+
+        List<Restaurante> all = c.listarRestaurantes("");
+        String[] s = new String[all.size()];
+
+        for(int i = 0; i < all.size(); i++) {
+            s[i] = all.get(i).getNombre();
+        }
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_dropdown_item_1line, s);
+        restaurante.setAdapter(adapter);
+
+        List<Plato_comida> allPlatos = c.get_platos_restaurante(restaurante.getText().toString());
+        String[] ss = new String[allPlatos.size()];
+
+        for(int i = 0; i < allPlatos.size(); i++) {
+            ss[i] = allPlatos.get(i).getNombre();
+        }
+
+        ArrayAdapter<String> adapters = new ArrayAdapter<String>(this,
+                android.R.layout.simple_dropdown_item_1line, ss);
+        restaurante.setAdapter(adapters);
 
         cancelar =(Button)findViewById(R.id.cancelarNDBtn);
         cancelar.setOnClickListener(new View.OnClickListener() {
@@ -57,8 +88,10 @@ public class NuevaDegustacionActivity extends AppCompatActivity {
                     if(restaurante.getText().length() == 0 || plato.getText().length() == 0) {
                         Toast.makeText(getApplicationContext(),"Todos los campos deben ser rellenados",Toast.LENGTH_LONG).show();
                     } else {
+                        Random random = new Random();
+                        int number = random.nextInt(100000);
                         Toast.makeText(getApplicationContext(),"Degustación creada",Toast.LENGTH_LONG).show();
-                        Degustacion degustacion = new Degustacion(num++, c.activo.getUsername(), num++, (int)(calificacion.getRating())+"");
+                        Degustacion degustacion = new Degustacion(number, u.getUsername(), num++, (int)(calificacion.getRating())+"");
                         c.crearDegustacion(degustacion);
                         Intent intent = new Intent(NuevaDegustacionActivity.this, MainActivity2.class);
                         startActivity(intent);

@@ -14,8 +14,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tapastop.Entidades.Restaurante;
-import com.example.tapastop.ForgotPw;
-import com.example.tapastop.LoginActivity;
 import com.example.tapastop.R;
 import com.example.tapastop.RestaurantScreenActivity;
 

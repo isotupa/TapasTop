@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.tapastop.Entidades.Degustacion;
 import com.example.tapastop.Entidades.Plato_comida;
 import com.example.tapastop.R;
+import com.example.tapastop.backend.sqlte.Controlador;
+import com.example.tapastop.backend.sqlte.Modelo;
 
 import java.util.List;
 import java.util.Random;
@@ -27,7 +29,7 @@ public class PlatoEvaluableAdapter extends RecyclerView.Adapter<PlatoEvaluableAd
     @NonNull
     @Override
     public PlatoEvaluableAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_list_item_degustaciones, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_list_item_platos_evaluables, parent, false);
 
         // Passing view to ViewHolder
         PlatoEvaluableAdapter.ViewHolder viewHolder = new PlatoEvaluableAdapter.ViewHolder(view);
@@ -35,14 +37,16 @@ public class PlatoEvaluableAdapter extends RecyclerView.Adapter<PlatoEvaluableAd
     }
     @Override
     public void onBindViewHolder(@NonNull PlatoEvaluableAdapter.ViewHolder holder, int position) {
-
-        Random random = new Random();
-        int number = random.nextInt(100000);
-
-        holder.plato.setText(number+"");
+        holder.plato.setText(platos.get(position).getNombre());
         //holder.restaurante.setText(Modelo.get_Restaurante(degustaciones.get(position).getId_plato()).getNombre());
-        holder.restaurante.setText("hai");
-        //holder.rating.setRating(Integer.parseInt(platos.get(position).getCalificacion()));
+        List<Degustacion> l = Modelo.listar_degustaciones_restaurante(platos.get(position).getId());
+        double avg = 0;
+        for(int i = 0; i < l.size(); i++) {
+            avg += Integer.parseInt(l.get(i).getCalificacion());
+        }
+        if(l.size() > 0) avg = avg/l.size();
+        else avg = 2.5;
+        holder.rating.setRating((float) avg);
         //holder.rating.setRating((float)3.5);
         //holder.restaurante.setText("un restaurante");
     }
@@ -54,14 +58,11 @@ public class PlatoEvaluableAdapter extends RecyclerView.Adapter<PlatoEvaluableAd
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView plato;
-        TextView restaurante;
-
         RatingBar rating;
 
         public ViewHolder(View view) {
             super(view);
             plato = itemView.findViewById(R.id.plato);
-            restaurante = itemView.findViewById(R.id.restaurante);
             rating = (RatingBar) itemView.findViewById(R.id.ratingBar);
             rating.setIsIndicator(true);
         }

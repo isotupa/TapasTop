@@ -76,7 +76,7 @@ public class Controlador {
         return modelo.listar_restaurantes(pattern);
     }
 
-    public List<Degustacion> listarDegustaciones(Usuario usuario) {
+    public List<Degustacion> listarDegustaciones(String usuario) {
         return modelo.listar_degustaciones(usuario);
     }
 

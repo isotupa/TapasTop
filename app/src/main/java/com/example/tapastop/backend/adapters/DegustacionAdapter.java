@@ -38,12 +38,8 @@ public class DegustacionAdapter extends RecyclerView.Adapter<DegustacionAdapter.
     @Override
     public void onBindViewHolder(@NonNull DegustacionAdapter.ViewHolder holder, int position) {
 
-        Random random = new Random();
-        int number = random.nextInt(100000);
-
-        holder.plato.setText(number+"");
+        holder.plato.setText("nombre de id plato aqui");
         //holder.restaurante.setText(Modelo.get_Restaurante(degustaciones.get(position).getId_plato()).getNombre());
-        holder.restaurante.setText("hai");
         holder.rating.setRating(Integer.parseInt(degustaciones.get(position).getCalificacion()));
         //holder.rating.setRating((float)3.5);
         //holder.restaurante.setText("un restaurante");

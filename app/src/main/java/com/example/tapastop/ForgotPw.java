@@ -3,13 +3,19 @@ package com.example.tapastop;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.tapastop.backend.sqlte.GMail;
+import com.example.tapastop.backend.sqlte.SendMailTask;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class ForgotPw extends AppCompatActivity {
 
@@ -39,7 +45,7 @@ public class ForgotPw extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 sendEmail();
-                //Toast.makeText(getApplicationContext(),"Mira el correo de " + email.getText(),Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),"Mira el correo de " + email.getText(), Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(ForgotPw.this, LoginActivity.class);
                 startActivity(intent);
             }
@@ -47,34 +53,31 @@ public class ForgotPw extends AppCompatActivity {
     }
 
     protected void sendEmail() {
-        Log.i("Send email", "");
+        Log.i("SendMailActivity", "Send Button Clicked.");
 
-        String[] TO = {"kaizalk96@gmail.com"};
-        //String[] CC = {"kaizalk96@gmail.com"};
-        Intent emailIntent = new Intent(Intent.ACTION_SEND);
-        emailIntent.setData(Uri.parse("mailto:"));
-        emailIntent.setType("text/plain");
-
-
-        emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
-        //emailIntent.putExtra(Intent.EXTRA_CC, CC);
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Your subject");
-        emailIntent.putExtra(Intent.EXTRA_TEXT, "Email message goes here");
-
+        String fromEmail = "tapastopnoreply@gmail.com";
+        String fromPassword = "tapastop13";
+        String toEmails = "marko.isotupa01@gmail.com";
+        //List toEmailList = Arrays.asList(toEmails.split("\\s*,\\s*"));
+        List toEmailList = new ArrayList();
+        toEmailList.add(toEmails);
+        Log.i("SendMailActivity", "To List: " + toEmailList);
+        String emailSubject = "prueba";
+        String emailBody = "funciona";
         try {
-            startActivity(Intent.createChooser(emailIntent, "Send mail..."));
-            finish();
-            Log.i("Finished sending email", "");
-        } catch (android.content.ActivityNotFoundException ex) {
-            Toast.makeText(ForgotPw.this,
-                    "There is no email client installed.", Toast.LENGTH_SHORT).show();
+            new SendMailTask(ForgotPw.this).execute(fromEmail, fromPassword, toEmailList, emailSubject, emailBody);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+        /*try {
+            GMail sender = new GMail("tapastopnoreply@gmail.com", "tapastop13");
+            sender.sendMail("This is Subject",
+                    "This is Body",
+                    "tapastopnoreply@gmail.com",
+                    "kaizalk96@gmail.com");
+        } catch (Exception e) {
+            Log.e("SendMail", e.getMessage(), e);
+        }*/
     }
-/*
-    @Override
-    protected void onDestroy() {
-        Intent i = new Intent(this, LoginActivity.class);
-        startActivity(i);
-        super.onDestroy();
-    }*/
+
 }
