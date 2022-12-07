@@ -7,10 +7,18 @@ public class Plato_comida {
     private String region;
     private String sabor;
     private String descripcion = "";
-    //FOTO
+    private byte[] foto;
     private String restaurante;
 
-    public Plato_comida(Integer id, String nombre,String tipo_comida,String region,String sabor, String restaurante){
+    public byte[] getFoto() {
+        return foto;
+    }
+
+    public void setFoto(byte[] foto) {
+        this.foto = foto;
+    }
+
+    public Plato_comida(Integer id, String nombre, String tipo_comida, String region, String sabor, String restaurante){
         this.id = id;
         this.nombre = nombre;
         this.tipo_comida = tipo_comida;

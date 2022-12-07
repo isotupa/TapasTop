@@ -42,7 +42,7 @@ public class Database extends SQLiteOpenHelper {
                 "Direccion TEXT NOT NULL,"+
                 "FOREIGN KEY(Username) REFERENCES TABLE_USUARIOS(Username))");
         sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_PLATO_COMIDA +"(" +
-                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT , " +
                 "Nombre TEXT NOT NULL,"+
                 "Tipo_comida TEXT NOT NULL," +
                 "Region TEXT NOT NULL," +

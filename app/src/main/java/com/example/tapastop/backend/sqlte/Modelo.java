@@ -7,6 +7,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import androidx.annotation.IntegerRes;
+
 import com.example.tapastop.Entidades.Degustacion;
 import com.example.tapastop.Entidades.Plato_comida;
 import com.example.tapastop.Entidades.Restaurante;
@@ -119,6 +121,7 @@ public class Modelo {
         ContentValues values = new ContentValues();
         values.put("Nombre", restaurante.getNombre());
         values.put("Direccion", restaurante.getDireccion());
+        values.put("Username",restaurante.getUsername());
         db.insert("t_restaurante", null, values);
         return true;
     }
@@ -131,7 +134,7 @@ public class Modelo {
         values.put("Region", platoComida.getRegion());
         values.put("Sabor", platoComida.getSabor());
         values.put("Descripcion", platoComida.getDescripcion());
-        //FOTO
+        values.put("Foto",platoComida.getFoto());
         values.put("Restaurante", platoComida.getRestaurante());
         db.insert("t_plato_comida", null, values);
         return true;
@@ -156,7 +159,8 @@ public class Modelo {
                 while (cursor.moveToNext()) { //Deberia llevarnos al primer elemento
                     @SuppressLint("Range") String nombre = cursor.getString(cursor.getColumnIndex("Nombre"));
                     @SuppressLint("Range") String direccion = cursor.getString(cursor.getColumnIndex("Direccion"));
-                    Restaurante restaurante = new Restaurante(nombre, direccion);
+                    @SuppressLint("Range") String username = cursor.getString(cursor.getColumnIndex("Username"));
+                    Restaurante restaurante = new Restaurante(nombre, direccion,username);
                     restaurantes.add(restaurante);
                 }
                 return restaurantes;
@@ -195,7 +199,8 @@ public class Modelo {
             try {
                 @SuppressLint("Range") String nombre = cursor.getString(cursor.getColumnIndex("Nombre"));
                 @SuppressLint("Range") String direccion = cursor.getString(cursor.getColumnIndex("Direccion"));
-                res = new Restaurante(nombre,direccion);
+                @SuppressLint("Range") String username = cursor.getString(cursor.getColumnIndex("Username"));
+                res = new Restaurante(nombre,direccion,username);
                 return res;
             } catch (Exception e) {
                 return null;
@@ -287,5 +292,88 @@ public class Modelo {
         if(platos.size() == 0) return -1;
         media_res = (media_res/platos.size()) ;
         return  media_res;
+    }
+
+    //Un método para listar los restaurantes creados por un usuario
+    public List<Restaurante> restaurantes_usuarios(String username){
+        ArrayList<Restaurante> restaurantes = new ArrayList<Restaurante>();
+        String query = "SELECT * from  t_restaurante where username = '" + username + "'";
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor != null) {
+            while (cursor.moveToNext()) {
+                //@SuppressLint("Range") Integer id = cursor.getInt(cursor.getColumnIndex("id"));
+                @SuppressLint("Range") String nombre = cursor.getString(cursor.getColumnIndex("Nombre"));
+                @SuppressLint("Range") String direccion = cursor.getString(cursor.getColumnIndex("Direccion"));
+                Restaurante restaurante = new Restaurante(nombre,direccion,username);
+                restaurantes.add(restaurante);
+            }
+            return restaurantes;
+        }
+        return restaurantes;
+    }
+
+    //un método al q le pases un correo y te devuelva la cuenta asociada
+    public Usuario getUsuario_mail(String correo){
+        Usuario res = new Usuario();
+        String query = "SELECT * from t_usuarios " +
+                "where username = '" + correo + "'";
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor != null) {
+            cursor.moveToFirst();
+            try {
+                @SuppressLint("Range") String passw = cursor.getString(cursor.getColumnIndex("Password"));
+                @SuppressLint("Range") String edad = cursor.getString(cursor.getColumnIndex("Edad"));
+                @SuppressLint("Range") String username = cursor.getString(cursor.getColumnIndex("Username"));
+                @SuppressLint("Range") String nombre = cursor.getString(cursor.getColumnIndex("Nombre"));
+                @SuppressLint("Range") String ap1 = cursor.getString(cursor.getColumnIndex("Apellido1"));
+                @SuppressLint("Range") String ap2 = cursor.getString(cursor.getColumnIndex("Apellido2"));
+                @SuppressLint("Range") String ciudad = cursor.getString(cursor.getColumnIndex("Ciudad"));
+                @SuppressLint("Range") byte[] foto = cursor.getBlob(cursor.getColumnIndex("Foto"));
+                @SuppressLint("Range") String info = cursor.getString(cursor.getColumnIndex("Info"));
+                res.setUsername(username);
+                res.setEdad(edad);
+                res.setPassword(passw);
+                res.setEmail(correo);
+                res.setNombre(nombre);
+                res.setAp1(ap1);
+                res.setAp2(ap2);
+                res.setUbi(ciudad);
+                res.setBio(info);
+                res.setFoto(foto);
+                return res;
+            } catch (Exception e) {
+                return null;
+            }
+        }
+        return res;
+    }
+
+    //un método al q le pases un plato de comida y el nombre de su restaurante y te devuelva el id del plato
+    @SuppressLint("Range")
+    public Integer get_id_plato (String nombre_plato, String nombre_restaurante){
+            Integer id_plato = -1;
+            String query = "Select * from t_plato_comida where restaurante = '"+ nombre_restaurante + "' " +
+                    "and nombre = '" + nombre_plato + "'";
+            Cursor cursor = db.rawQuery(query, null);
+            if (cursor != null) {
+                    try {
+                        cursor.moveToFirst();
+                        id_plato = cursor.getInt(cursor.getColumnIndex("id"));
+                    } catch (Exception e) {
+                        return null;
+                    }
+                cursor.close();
+                return id_plato;
+            }
+            return id_plato;
+    }
+
+    //Añadir amigo
+    public void anadir_amigo(String username1,String username2){
+        ContentValues values = new ContentValues();
+        values.put("Username1", username1);
+        values.put("Username2", username2);
+        db.insert("t_amigos", null, values);
+
     }
 }
