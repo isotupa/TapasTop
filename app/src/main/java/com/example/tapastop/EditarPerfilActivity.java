@@ -106,10 +106,8 @@ public class EditarPerfilActivity extends AppCompatActivity {
                     temporal.setEmail(email.getText().toString());
                     temporal.setUbi(ubi.getText().toString());
                     temporal.setBio(bio.getText().toString());
+                    temporal.setFoto(c.getUsuario(username.getText().toString()).getFoto());
                     c.crearCuenta2(temporal);
-                    //c.setActivo(temporal);
-
-                    //c.activo = c.getUsuario(username.getText().toString());
 
                     Intent intent = new Intent(EditarPerfilActivity.this, MainActivity2.class);
                     startActivity(intent);

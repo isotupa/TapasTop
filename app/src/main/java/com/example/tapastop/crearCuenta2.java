@@ -31,7 +31,7 @@ public class crearCuenta2 extends AppCompatActivity {
     EditText info;
 
     ImageButton img;
-    byte[] sqlimg;
+    byte[] byteArray;
 
     public static final int GET_FROM_GALLERY = 3;
 
@@ -80,6 +80,7 @@ public class crearCuenta2 extends AppCompatActivity {
                 u.setAp2(String.valueOf(ap2.getText()));
                 u.setUbi(String.valueOf(ubi.getText()));
                 u.setBio(String.valueOf(info.getText()));
+                u.setFoto(byteArray);
                 c.crearCuenta2(u);
                 Intent intent = new Intent(crearCuenta2.this, VueltaALogin.class);
                 startActivity(intent);
@@ -100,7 +101,7 @@ public class crearCuenta2 extends AppCompatActivity {
                 img.setImageURI(selectedImage);
                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
                 bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-                byte[] byteArray = stream.toByteArray();
+                byteArray = stream.toByteArray();
                 u.setFoto(byteArray);
                 c.crearCuenta2(u);
             } catch (FileNotFoundException e) {
