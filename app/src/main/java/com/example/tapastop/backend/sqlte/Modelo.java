@@ -209,7 +209,7 @@ public class Modelo {
     public static Restaurante get_Restaurante(Integer id_plato) {
         Restaurante res = null;
         String query = "SELECT * from t_restaurante where nombre = " +
-                "(Select nombre from t_plato_comida where id = " + id_plato + ")";
+                "(Select Restaurante from t_plato_comida where id = " + id_plato + ")";
         Cursor cursor = db.rawQuery(query, null);
         if (cursor != null) {
             cursor.moveToFirst();
@@ -297,18 +297,38 @@ public class Modelo {
     public double valoracion_media_restaurante(String restaurante){
         Integer media_res = 0;
         List<Plato_comida> platos = get_platos_restaurante(restaurante);
+        List<Integer> medias = new ArrayList<>();
+        if(platos.size() == 0) return -1;
+        int i = -1;
+        double res = 0;
+        for(Plato_comida p : platos) {
+            double avgDegustaciones = media(listar_degustaciones_restaurante(i++));
+            if(avgDegustaciones != -1) res += avgDegustaciones;
+        }
+        System.out.println(res+"/"+platos.size());
+        return res/platos.size();
+        /*
         for (int i = 0 ; i < platos.size();i++) {
             int media_plato = 0;
             List<Degustacion> degustaciones = listar_degustaciones_restaurante(i);
-            if (degustaciones.size() == 0) return -1;
+            if (degustaciones.size() == 0) continue;
             for (int j = 0; j < degustaciones.size(); j++) {
                 media_plato += Integer.parseInt(degustaciones.get(j).getCalificacion());
             }
             media_res += (media_plato / degustaciones.size());
         }
-        if(platos.size() == 0) return -1;
-        media_res = (media_res/platos.size()) ;
-        return  media_res;
+        media_res = (media_res/platos.size());
+        return  media_res;*/
+    }
+
+    private double media(List<Degustacion> l) {
+        double res = 0;
+        if(l.size() == 0) return -1;
+        for(Degustacion d : l) {
+            res += Integer.parseInt(d.getCalificacion());
+        }
+        System.out.println("avg:"+res);
+        return res;
     }
 
     //Un método para listar los restaurantes creados por un usuario
@@ -367,7 +387,7 @@ public class Modelo {
 
     //un método al q le pases un plato de comida y el nombre de su restaurante y te devuelva el id del plato
     @SuppressLint("Range")
-    public Integer get_id_plato (String nombre_plato, String nombre_restaurante){
+    public static Integer get_id_plato (String nombre_plato, String nombre_restaurante){
             Integer id_plato = -1;
             String query = "Select * from t_plato_comida where restaurante = '"+ nombre_restaurante + "' " +
                     "and nombre = '" + nombre_plato + "'";
@@ -399,5 +419,22 @@ public class Modelo {
                 "where username1 = '" + username1 + "'" +
                 "and username2 = '" + username2 + "'";
         db.execSQL(query);
+    }
+
+    public static String get_plato_comida(Integer id_plato) {
+        String res = null;
+        String query = "SELECT * from t_plato_comida where id = " + id_plato;
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor != null) {
+            cursor.moveToFirst();
+            try {
+                @SuppressLint("Range") String nombre = cursor.getString(cursor.getColumnIndex("Nombre"));
+
+                return nombre;
+            } catch (Exception e) {
+                return null;
+            }
+        }
+        return null;
     }
 }

@@ -65,7 +65,6 @@ public class EditarPerfilActivity extends AppCompatActivity {
         ubi.setText(user.getUbi());
         //genero.setText(c.activo.get());
         bio.setText(user.getBio());
-        System.out.println("ESTE ES MI LOGIN" +user.getNombre());
 
         if(user.getFoto() != null) {
             byte[] blob = user.getFoto();

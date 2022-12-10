@@ -17,6 +17,7 @@ import com.example.tapastop.Entidades.Plato_comida;
 import com.example.tapastop.Entidades.Restaurante;
 import com.example.tapastop.Entidades.Usuario;
 import com.example.tapastop.backend.sqlte.Controlador;
+import com.example.tapastop.backend.sqlte.Modelo;
 import com.example.tapastop.ui.notifications.NotificationsFragment;
 
 import java.util.List;
@@ -58,6 +59,7 @@ public class NuevaDegustacionActivity extends AppCompatActivity {
                 android.R.layout.simple_dropdown_item_1line, s);
         restaurante.setAdapter(adapter);
 
+
         List<Plato_comida> allPlatos = c.get_platos_restaurante(restaurante.getText().toString());
         String[] ss = new String[allPlatos.size()];
 
@@ -67,7 +69,7 @@ public class NuevaDegustacionActivity extends AppCompatActivity {
 
         ArrayAdapter<String> adapters = new ArrayAdapter<String>(this,
                 android.R.layout.simple_dropdown_item_1line, ss);
-        restaurante.setAdapter(adapters);
+        plato.setAdapter(adapters);
 
         cancelar =(Button)findViewById(R.id.cancelarNDBtn);
         cancelar.setOnClickListener(new View.OnClickListener() {
@@ -82,22 +84,23 @@ public class NuevaDegustacionActivity extends AppCompatActivity {
         guardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int res;
                 try {
-
                     if(restaurante.getText().length() == 0 || plato.getText().length() == 0) {
                         Toast.makeText(getApplicationContext(),"Todos los campos deben ser rellenados",Toast.LENGTH_LONG).show();
                     } else {
-                        Random random = new Random();
-                        int number = random.nextInt(100000);
-                        Toast.makeText(getApplicationContext(),"Degustación creada",Toast.LENGTH_LONG).show();
-                        Degustacion degustacion = new Degustacion(number, u.getUsername(), num++, (int)(calificacion.getRating())+"");
-                        c.crearDegustacion(degustacion);
-                        Intent intent = new Intent(NuevaDegustacionActivity.this, MainActivity2.class);
-                        startActivity(intent);
+                        Integer idPlato = Modelo.get_id_plato(plato.getText().toString(), restaurante.getText().toString());
+                        if(idPlato == -1) {
+                            Toast.makeText(getApplicationContext(),"Este plato o este restaurante no existen",Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(getApplicationContext(),"Degustación creada",Toast.LENGTH_LONG).show();
+                            Degustacion degustacion = new Degustacion(num++, u.getUsername(), idPlato, (int)(calificacion.getRating())+"");
+                            c.crearDegustacion(degustacion);
+                            Intent intent = new Intent(NuevaDegustacionActivity.this, MainActivity2.class);
+                            startActivity(intent);
+                        }
                     }
                 } catch (Exception e) {
-                    Toast.makeText(getApplicationContext(),"Descripción debe ser un número del 1 al 5",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"Error al crear la degustación",Toast.LENGTH_LONG).show();
                 }
 
 

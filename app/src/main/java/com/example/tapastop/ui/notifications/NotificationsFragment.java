@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tapastop.Entidades.Degustacion;
+import com.example.tapastop.Entidades.Usuario;
 import com.example.tapastop.NuevaDegustacionActivity;
 import com.example.tapastop.R;
 import com.example.tapastop.backend.adapters.DegustacionAdapter;
@@ -42,6 +43,8 @@ public class NotificationsFragment extends Fragment {
 
         Controlador c = new Controlador(getContext());
 
+        Usuario u = c.getUsuario(c.getUser_a());
+
         // layout for vertical orientation
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(linearLayoutManager);
@@ -55,7 +58,7 @@ public class NotificationsFragment extends Fragment {
         listaDegustaciones.add(new Degustacion(5, c.activo.getUsername(), 5, "3"));
         listaDegustaciones.add(new Degustacion(6, c.activo.getUsername(), 6, "4"));
         //DegustacionAdapter adapter = new DegustacionAdapter(listaDegustaciones);
-        DegustacionAdapter adapter = new DegustacionAdapter(c.listarDegustaciones(c.getUsuario(c.getUser_a()).getUsername()));
+        DegustacionAdapter adapter = new DegustacionAdapter(c.listarDegustaciones(u.getUsername()));
 
         // Setting DegustacionAdapter to RecyclerView
         recyclerView.setAdapter(adapter);

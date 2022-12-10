@@ -38,11 +38,11 @@ public class DegustacionAdapter extends RecyclerView.Adapter<DegustacionAdapter.
     @Override
     public void onBindViewHolder(@NonNull DegustacionAdapter.ViewHolder holder, int position) {
 
-        holder.plato.setText("nombre de id plato aqui");
-        //holder.restaurante.setText(Modelo.get_Restaurante(degustaciones.get(position).getId_plato()).getNombre());
+        holder.plato.setText(Modelo.get_plato_comida(degustaciones.get(position).getId_plato()));
         holder.rating.setRating(Integer.parseInt(degustaciones.get(position).getCalificacion()));
         //holder.rating.setRating((float)3.5);
-        //holder.restaurante.setText("un restaurante");
+        System.out.println(degustaciones.get(position).getId_plato());
+        holder.restaurante.setText(Modelo.get_Restaurante(degustaciones.get(position).getId_plato()).getNombre());
     }
 
     @Override

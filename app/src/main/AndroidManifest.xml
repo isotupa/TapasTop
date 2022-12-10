@@ -18,7 +18,27 @@
         android:theme="@style/Theme.TapasTop"
         android:windowSoftInputMode="adjustPan"
         tools:targetApi="31">
-
+        <activity
+            android:name=".GalardonesActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".FavFoodActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".UserActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".AyudaActivity"
             android:exported="true">
@@ -56,7 +76,6 @@
         </activity>
         <activity
             android:name=".nuevoRestauranteActivity"
-            android:windowSoftInputMode="adjustResize"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -79,8 +98,8 @@
         <activity
             android:name=".MainActivity2"
             android:exported="false"
-            android:windowSoftInputMode="adjustResize"
-            android:label="@string/title_activity_main2">
+            android:label="@string/title_activity_main2"
+            android:windowSoftInputMode="adjustResize">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -95,7 +114,6 @@
         <activity
             android:name=".ForgotPw"
             android:exported="false">
-
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -126,16 +144,19 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="https"
+
+                <data
                     android:host="www.tapastop.com"
-                    android:pathPrefix="/verify" />
+                    android:pathPrefix="/verify"
+                    android:scheme="https" />
             </intent-filter>
 
             <meta-data

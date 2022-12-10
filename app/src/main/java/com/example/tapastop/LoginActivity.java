@@ -93,23 +93,27 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-/*
-        Restaurante res1 = new Restaurante("MacDonalds", "Calle Mayor");
-        Restaurante res2 = new Restaurante("Kurger Bing", "Calle Menor");
-        Restaurante res3 = new Restaurante("Wendys", "Calle Central");
+        if(c.restaurantes_usuarios("admin").size() == 0) {
+            Usuario admin = new Usuario("admin","admin","21","admin@admin.com");
+            c.crearCuenta(admin);
+            Restaurante res1 = new Restaurante("MacDonalds", "Calle Mayor", "admin");
+            Restaurante res2 = new Restaurante("Kurger Bing", "Calle Menor", "admin");
+            Restaurante res3 = new Restaurante("Wendys", "Calle Central", "admin");
 
-        Modelo.crearRestaurante(res1);
-        Modelo.crearRestaurante(res2);
-        Modelo.crearRestaurante(res3);
+            Modelo.crearRestaurante(res1);
+            Modelo.crearRestaurante(res2);
+            Modelo.crearRestaurante(res3);
 
-        Plato_comida p1 = new Plato_comida(10, "KrangreBurger", "Comida Rápida", "USA", "Malo", "MacDonalds");
-        Plato_comida p2 = new Plato_comida(11, "QuarterPound", "Comida Rápida", "USA", "Bien", "Kurger Bing");
-        Plato_comida p3 = new Plato_comida(12, "Burger", "Comida Rápida", "USA", "Malo", "Wendys");
+            Plato_comida p1 = new Plato_comida(10, "KrangreBurger", "Comida Rápida", "USA", "Malo", "MacDonalds");
+            Plato_comida p2 = new Plato_comida(11, "QuarterPound", "Comida Rápida", "USA", "Bien", "Kurger Bing");
+            Plato_comida p3 = new Plato_comida(12, "Burger", "Comida Rápida", "USA", "Malo", "Wendys");
 
-        Modelo.crearPlatoComida(p1);
-        Modelo.crearPlatoComida(p2);
-        Modelo.crearPlatoComida(p3);
-*/
+            Modelo.crearPlatoComida(p1);
+            Modelo.crearPlatoComida(p2);
+            Modelo.crearPlatoComida(p3);
+        }
+
+
 
         Intent appLinkIntent = getIntent();
         String appLinkAction = appLinkIntent.getAction();

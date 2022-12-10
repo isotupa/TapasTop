@@ -47,7 +47,7 @@ public class nuevoRestauranteActivity extends AppCompatActivity {
         guardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Restaurante res = new Restaurante(nombre.getText().toString(), dir.getText().toString(),c.getUsuario(c.getUser_a()).toString());
+                Restaurante res = new Restaurante(nombre.getText().toString(), dir.getText().toString(),c.getUsuario(c.getUser_a()).getUsername());
                 c.crearRestaurante(res);
                 Toast.makeText(getApplicationContext(),"¡Restaurante creado!" ,Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(nuevoRestauranteActivity.this, MainActivity2.class);

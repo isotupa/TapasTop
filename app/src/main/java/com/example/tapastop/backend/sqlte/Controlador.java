@@ -91,4 +91,17 @@ public class Controlador {
     public List<Plato_comida> get_platos_restaurante(String restaurante) {
         return modelo.get_platos_restaurante(restaurante);
     }
+
+    public List<Restaurante> restaurantes_usuarios(String username) {
+        return modelo.restaurantes_usuarios(username);
+    }
+
+    public String get_plato_comida(Integer id_plato) {
+        return modelo.get_plato_comida(id_plato);
+    }
+
+    public List listar_degustaciones_Orden_calificacion(String usuario) {
+        return modelo.listar_degustaciones_Orden_calificacion(usuario);
+    }
+
 }

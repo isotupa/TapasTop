@@ -3,6 +3,7 @@ package com.example.tapastop.backend.adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -14,6 +15,8 @@ import com.example.tapastop.Entidades.Plato_comida;
 import com.example.tapastop.R;
 import com.example.tapastop.backend.sqlte.Controlador;
 import com.example.tapastop.backend.sqlte.Modelo;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 import java.util.Random;
@@ -38,15 +41,27 @@ public class PlatoEvaluableAdapter extends RecyclerView.Adapter<PlatoEvaluableAd
     @Override
     public void onBindViewHolder(@NonNull PlatoEvaluableAdapter.ViewHolder holder, int position) {
         holder.plato.setText(platos.get(position).getNombre());
+        Plato_comida p = platos.get(position);
+        if(p.getFoto() == null) {
+            holder.img.setImageResource(R.drawable.iconmonstr_error_filled);
+        } else {
+            //TODO set img to photo of dish
+        }
         //holder.restaurante.setText(Modelo.get_Restaurante(degustaciones.get(position).getId_plato()).getNombre());
         List<Degustacion> l = Modelo.listar_degustaciones_restaurante(platos.get(position).getId());
         double avg = 0;
         for(int i = 0; i < l.size(); i++) {
             avg += Integer.parseInt(l.get(i).getCalificacion());
         }
-        if(l.size() > 0) avg = avg/l.size();
-        else avg = 2.5;
-        holder.rating.setRating((float) avg);
+        if(l.size() > 0) {
+            avg = avg/l.size();
+            holder.rating.setVisibility(View.VISIBLE);
+            holder.rating.setRating((float) avg);
+        }
+        else {
+            holder.rating.setVisibility(View.INVISIBLE);
+            holder.info.setVisibility(View.VISIBLE);
+        }
         //holder.rating.setRating((float)3.5);
         //holder.restaurante.setText("un restaurante");
     }
@@ -58,13 +73,18 @@ public class PlatoEvaluableAdapter extends RecyclerView.Adapter<PlatoEvaluableAd
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView plato;
+        TextView info;
         RatingBar rating;
+        ImageView img;
 
         public ViewHolder(View view) {
             super(view);
             plato = itemView.findViewById(R.id.plato);
             rating = (RatingBar) itemView.findViewById(R.id.ratingBar);
             rating.setIsIndicator(true);
+            info = itemView.findViewById(R.id.textView8);
+            info.setVisibility(View.INVISIBLE);
+            img = itemView.findViewById(R.id.fotoPlato);
         }
     }
 }
