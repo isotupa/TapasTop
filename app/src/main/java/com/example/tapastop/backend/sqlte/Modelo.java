@@ -171,10 +171,27 @@ public class Modelo {
         }
         return restaurantes;
     }
-
+    //ORDEN MAS RECIENTE
     public List listar_degustaciones(String usuario) {
         List<Degustacion> degustaciones = new ArrayList<Degustacion>();
-        String query = "SELECT * from  t_degustacion where Username = '" + usuario + "'";
+        String query = "SELECT * from  t_degustacion where Username = '" + usuario + "' ORDER BY id DESC";
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor != null) {
+            while (cursor.moveToNext()) {
+                @SuppressLint("Range") Integer id = cursor.getInt(cursor.getColumnIndex("id"));
+                @SuppressLint("Range") Integer id_plato_comida = cursor.getInt(cursor.getColumnIndex("id_Plato_comida"));
+                @SuppressLint("Range") String calificacion = cursor.getString(cursor.getColumnIndex("Calificacion"));
+                Degustacion degustacion = new Degustacion(id, usuario, id_plato_comida, calificacion);
+                degustaciones.add(degustacion);
+            }
+            return degustaciones;
+        }
+        return degustaciones;
+    }
+    //ORDEN CALIFICACION MAYOR
+    public List listar_degustaciones_Orden_calificacion(String usuario) {
+        List<Degustacion> degustaciones = new ArrayList<Degustacion>();
+        String query = "SELECT * from  t_degustacion where Username = '" + usuario + "' ORDER BY calificacion DESC";
         Cursor cursor = db.rawQuery(query, null);
         if (cursor != null) {
             while (cursor.moveToNext()) {
@@ -206,7 +223,7 @@ public class Modelo {
                 return null;
             }
         }
-        return res;
+        return null;
     }
 
     public static Degustacion get_Degustacion(Integer id_plato) {
@@ -227,7 +244,7 @@ public class Modelo {
                 return null;
             }
         }
-        return des;
+        return null;
     }
     // Un método al que le pases un restaurante y te devuelva una lista de sus platos
     public List<Plato_comida> get_platos_restaurante(String restaurante) {
@@ -375,5 +392,12 @@ public class Modelo {
         values.put("Username2", username2);
         db.insert("t_amigos", null, values);
 
+    }
+    //Borrar Amigo
+    public void eliminar_amigo(String username1,String username2){
+        String query = "DELETE from t_amigos " +
+                "where username1 = '" + username1 + "'" +
+                "and username2 = '" + username2 + "'";
+        db.execSQL(query);
     }
 }

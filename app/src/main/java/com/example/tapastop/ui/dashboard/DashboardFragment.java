@@ -80,6 +80,7 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), nuevoRestauranteActivity.class);
+               // intent.putExtra("username", c.getUsuario(c.getUser_a()).getUsername());
                 startActivity(intent);
             }
         });

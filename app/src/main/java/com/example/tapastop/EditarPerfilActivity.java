@@ -69,7 +69,7 @@ public class EditarPerfilActivity extends AppCompatActivity {
 
         if(user.getFoto() != null) {
             byte[] blob = user.getFoto();
-            Bitmap bmp= BitmapFactory.decodeByteArray(blob,0,blob.length);
+            Bitmap bmp = BitmapFactory.decodeByteArray(blob,0,blob.length);
             foto.setImageBitmap(bmp);
         } else {
             foto.setImageResource(R.drawable.iconmonstr_error_filled);
