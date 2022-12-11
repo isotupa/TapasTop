@@ -34,7 +34,7 @@ public class NuevoPlatoActivity extends AppCompatActivity {
 
     Plato_comida plato;
 
-    byte[] byteArray;
+    byte[] byteArray = null;
 
     public static final int GET_FROM_GALLERY = 3;
 
@@ -71,6 +71,7 @@ public class NuevoPlatoActivity extends AppCompatActivity {
                 //int id = c.getIdPlato(getIntent().getExtras().get("restaurantName")+"", nombre.getText().toString());
                 plato = new Plato_comida(number, nombre.getText().toString(), tipo.getText().toString(),
                         region.getText().toString(), sabor.getText().toString(), getIntent().getExtras().get("restaurantName")+"");
+                if(byteArray != null) plato.setFoto(byteArray);
                 c.crearPlatoComida(plato);
                 Intent intent = new Intent(NuevoPlatoActivity.this, RestaurantScreenActivity.class);
                 intent.putExtra("restaurantName", getIntent().getExtras().get("restaurantName").toString());

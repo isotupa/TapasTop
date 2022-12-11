@@ -1,5 +1,7 @@
 package com.example.tapastop.backend.adapters;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,9 +47,11 @@ public class PlatoEvaluableAdapter extends RecyclerView.Adapter<PlatoEvaluableAd
         if(p.getFoto() == null) {
             holder.img.setImageResource(R.drawable.iconmonstr_error_filled);
         } else {
-            //TODO set img to photo of dish
+            byte[] blob = p.getFoto();
+            Bitmap bmp = BitmapFactory.decodeByteArray(blob,0,blob.length);
+            holder.img.setImageBitmap(bmp);
         }
-        //holder.restaurante.setText(Modelo.get_Restaurante(degustaciones.get(position).getId_plato()).getNombre());
+
         List<Degustacion> l = Modelo.listar_degustaciones_restaurante(platos.get(position).getId());
         double avg = 0;
         for(int i = 0; i < l.size(); i++) {

@@ -261,10 +261,11 @@ public class Modelo {
                     @SuppressLint("Range") String region = cursor.getString(cursor.getColumnIndex("Region"));
                     @SuppressLint("Range") String sabor = cursor.getString(cursor.getColumnIndex("Sabor"));
                     @SuppressLint("Range") String descripcion = cursor.getString(cursor.getColumnIndex("Descripcion"));
+                    @SuppressLint("Range") byte[] img = cursor.getBlob(cursor.getColumnIndex("Foto"));
                     Plato_comida plato = new Plato_comida(id,nombre,tipo_comida,region,sabor, restaurante);
                     plato.setDescripcion(descripcion);
+                    plato.setFoto(img);
                     platos.add(plato);
-                    System.out.println("asd"+ nombre);
                 } catch (Exception e) {
                     return null;
                 }
