@@ -14,12 +14,12 @@
         android:max="5"
         android:numStars="5"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/plato"
+        app:layout_constraintEnd_toEndOf="@+id/galardon"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/plato" />
+        app:layout_constraintStart_toStartOf="@+id/galardon" />
 
     <TextView
-        android:id="@+id/plato"
+        android:id="@+id/galardon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"

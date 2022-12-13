@@ -15,13 +15,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.tapastop.Entidades.Degustacion;
 import com.example.tapastop.Entidades.Plato_comida;
 import com.example.tapastop.R;
-import com.example.tapastop.backend.sqlte.Controlador;
 import com.example.tapastop.backend.sqlte.Modelo;
 
-import org.w3c.dom.Text;
-
 import java.util.List;
-import java.util.Random;
 
 public class PlatoEvaluableAdapter extends RecyclerView.Adapter<PlatoEvaluableAdapter.ViewHolder>{
     List<Plato_comida> platos;
@@ -83,7 +79,7 @@ public class PlatoEvaluableAdapter extends RecyclerView.Adapter<PlatoEvaluableAd
 
         public ViewHolder(View view) {
             super(view);
-            plato = itemView.findViewById(R.id.plato);
+            plato = itemView.findViewById(R.id.galardon);
             rating = (RatingBar) itemView.findViewById(R.id.ratingBar);
             rating.setIsIndicator(true);
             info = itemView.findViewById(R.id.textView8);

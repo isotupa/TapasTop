@@ -7,7 +7,7 @@ android:layout_height="65dp"
 tools:context=".list_item">
 
     <TextView
-        android:id="@+id/plato"
+        android:id="@+id/galardon"
         android:layout_width="366dp"
         android:layout_height="24dp"
         android:text="TextView"
@@ -30,10 +30,10 @@ tools:context=".list_item">
         android:textColor="@color/black"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/plato"
+        app:layout_constraintEnd_toEndOf="@+id/galardon"
         app:layout_constraintHorizontal_bias="0.003"
-        app:layout_constraintStart_toStartOf="@+id/plato"
-        app:layout_constraintTop_toBottomOf="@+id/plato"
+        app:layout_constraintStart_toStartOf="@+id/galardon"
+        app:layout_constraintTop_toBottomOf="@+id/galardon"
         app:layout_constraintVertical_bias="0.0" />
 
     <Button

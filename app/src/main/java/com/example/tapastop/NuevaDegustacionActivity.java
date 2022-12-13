@@ -92,6 +92,7 @@ public class NuevaDegustacionActivity extends AppCompatActivity {
                         if(idPlato == -1) {
                             Toast.makeText(getApplicationContext(),"Este plato o este restaurante no existen",Toast.LENGTH_LONG).show();
                         } else {
+                            //if(plato.getText().toString().equals("Paella")) Modelo.aumentar_degustacion_galardon(u.getUsername(), "Paella", 1);
                             Toast.makeText(getApplicationContext(),"Degustación creada",Toast.LENGTH_LONG).show();
                             Degustacion degustacion = new Degustacion(num++, u.getUsername(), idPlato, (int)(calificacion.getRating())+"");
                             c.crearDegustacion(degustacion);

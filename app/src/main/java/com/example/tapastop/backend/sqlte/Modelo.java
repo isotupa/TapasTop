@@ -310,6 +310,7 @@ public class Modelo {
         System.out.println(res+"/"+platos.size());
         return res/platos.size();
         /**/
+        int desc = 0;
         for (int i = 0 ; i < platos.size();i++) {
             int media_plato = 0;
             List<Degustacion> degustaciones = listar_degustaciones_restaurante(platos.get(i).getId());
@@ -319,7 +320,7 @@ public class Modelo {
             }
             media_res += (media_plato / degustaciones.size());
         }
-        media_res = (media_res/platos.size());
+        media_res = (media_res/(platos.size()-desc));
         return  media_res;
     }
 
@@ -445,7 +446,7 @@ public class Modelo {
 
 
 // subir número de degustaciones de x usuario por cantidad c
-    public void aumentar_degustacion_galardon (String username,String tipo,int c) {
+    public static void aumentar_degustacion_galardon (String username,String tipo,int c) {
         String query = "SELECT * from t_galardones where tipo = '" + tipo + "' and username = '" + username + "'";
         Cursor cursor = db.rawQuery(query, null);
         if (cursor != null) {

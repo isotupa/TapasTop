@@ -60,7 +60,7 @@ public class RestauranteAdapter extends RecyclerView.Adapter<RestauranteAdapter.
 
         public ViewHolder(View view) {
             super(view);
-            text = itemView.findViewById(R.id.plato);
+            text = itemView.findViewById(R.id.galardon);
             dir = itemView.findViewById(R.id.plato2);
             btn = itemView.findViewById(R.id.gotoRestaurantBtn);
             btn.setOnClickListener(new View.OnClickListener() {

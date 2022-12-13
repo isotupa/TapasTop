@@ -3,7 +3,6 @@ package com.example.tapastop.backend.adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -11,12 +10,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tapastop.Entidades.Degustacion;
 import com.example.tapastop.R;
-import com.example.tapastop.backend.sqlte.Controlador;
 import com.example.tapastop.backend.sqlte.Modelo;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class DegustacionAdapter extends RecyclerView.Adapter<DegustacionAdapter.ViewHolder>{
     List<Degustacion> degustaciones;
@@ -58,7 +54,7 @@ public class DegustacionAdapter extends RecyclerView.Adapter<DegustacionAdapter.
 
         public ViewHolder(View view) {
             super(view);
-            plato = itemView.findViewById(R.id.plato);
+            plato = itemView.findViewById(R.id.galardon);
             restaurante = itemView.findViewById(R.id.restaurante);
             rating = (RatingBar) itemView.findViewById(R.id.ratingBar);
             rating.setIsIndicator(true);

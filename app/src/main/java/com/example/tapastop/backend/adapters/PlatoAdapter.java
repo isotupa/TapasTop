@@ -8,18 +8,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.tapastop.Entidades.Plato_comida;
-import com.example.tapastop.Entidades.Restaurante;
 import com.example.tapastop.R;
 
 import java.util.List;
 
 public class PlatoAdapter extends RecyclerView.Adapter<PlatoAdapter.ViewHolder>{
-    List<Plato_comida> platos;
+    List<String> deg;
 
     // Constructor for initialization
-    public PlatoAdapter(List<Plato_comida> platos) {
-        this.platos = platos;
+    public PlatoAdapter(List<String> deg) {
+        this.deg = deg;
     }
     @NonNull
     @Override
@@ -32,23 +30,23 @@ public class PlatoAdapter extends RecyclerView.Adapter<PlatoAdapter.ViewHolder>{
     }
     @Override
     public void onBindViewHolder(@NonNull PlatoAdapter.ViewHolder holder, int position) {
-        holder.text.setText(platos.get(position).getNombre()+"");
-        //holder.dir.setText(platos.get(position).getRestaurante()+"");
+        holder.gal.setText(deg.get(position)+"");
+        holder.niv.setText(deg.get(position)+"");
     }
 
     @Override
     public int getItemCount() {
-        return platos.size();
+        return deg.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView text;
-        //TextView dir;
+        TextView gal;
+        TextView niv;
 
         public ViewHolder(View view) {
             super(view);
-            text = itemView.findViewById(R.id.plato);
-            //dir = itemView.findViewById(R.id.plato2);
+            gal = itemView.findViewById(R.id.galardon);
+            niv = itemView.findViewById(R.id.nivel);
         }
     }
 }
