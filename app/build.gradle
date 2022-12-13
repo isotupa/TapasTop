@@ -45,6 +45,7 @@ dependencies {
     implementation files('libs/activation.jar')
     implementation files('libs/additionnal.jar')
     implementation files('libs/mail.jar')
+    implementation 'androidx.test:monitor:1.5.0'
     //implementation files('/Users/kaizalk/AndroidStudioProjects/TapasTop2/app/libs/activation.jar')
     //implementation files('/Users/kaizalk/AndroidStudioProjects/TapasTop2/app/libs/additional.jar')
     //implementation files('/Users/kaizalk/AndroidStudioProjects/TapasTop2/app/libs/mail.jar')

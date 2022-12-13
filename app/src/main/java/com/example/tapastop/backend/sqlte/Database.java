@@ -15,9 +15,8 @@ public class Database extends SQLiteOpenHelper {
     public static final String TABLE_RESTAURANTE = "t_restaurante";
     public static final String TABLE_PLATO_COMIDA = "t_plato_comida";
     public static final String TABLE_DEGUSTACION = "t_degustacion";
-    public static final String TABLE_GALARDON_PAELLAS = "t_galardon_paella";
-    public static final String TABLE_GALARDON_PIZZA = "t_galardon_pizza";
-    public static final String TABLE_GALARDON_TORTILLA = "t_galardon_tortilla";
+    public static final String TABLE_GALARDONES = "t_galardones";
+
 
 
 
@@ -69,21 +68,13 @@ public class Database extends SQLiteOpenHelper {
                 "Username2 TEXT NOT NULL ," +
                 "FOREIGN KEY(Username1) REFERENCES TABLE_USUARIOS(Username)," +
                 "FOREIGN KEY(Username2) REFERENCES TABLE_USUARIOS(Username))");
-        sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_GALARDON_PAELLAS +"(" +
+        sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_GALARDONES +"(" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "Username TEXT NOT NULL," +
+                "Tipo TEXT NOT NULL,"+
                 "Degustaciones INTEGER NOT NULL,"+
                 "FOREIGN KEY(Username) REFERENCES TABLE_USUARIOS(Username))");
-        sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_GALARDON_PIZZA +"(" +
-                "id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "Username TEXT NOT NULL," +
-                "Degustaciones INTEGER NOT NULL,"+
-                "FOREIGN KEY(Username) REFERENCES TABLE_USUARIOS(Username))");
-        sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_GALARDON_TORTILLA +"(" +
-                "id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "Username TEXT NOT NULL," +
-                "Degustaciones INTEGER NOT NULL,"+
-                "FOREIGN KEY(Username) REFERENCES TABLE_USUARIOS(Username))");
+
     }
 
     @Override

@@ -10,6 +10,7 @@ import android.util.Log;
 import androidx.annotation.IntegerRes;
 
 import com.example.tapastop.Entidades.Degustacion;
+import com.example.tapastop.Entidades.Galardones;
 import com.example.tapastop.Entidades.Plato_comida;
 import com.example.tapastop.Entidades.Restaurante;
 import com.example.tapastop.Entidades.Usuario;
@@ -77,7 +78,7 @@ public class Modelo {
 
     public boolean borrar_usuario(Usuario username) {
         String query = "DELETE from t_usuarios " +
-                "where username = '" + username.getUsername() + "'";
+                "where username = '" + username + "'";
         db.execSQL(query);
         return true;
     }
@@ -117,7 +118,7 @@ public class Modelo {
         return res;
     }
 
-    public static boolean crearRestaurante(Restaurante restaurante) {
+    public boolean crearRestaurante(Restaurante restaurante) {
         ContentValues values = new ContentValues();
         values.put("Nombre", restaurante.getNombre());
         values.put("Direccion", restaurante.getDireccion());
@@ -126,7 +127,7 @@ public class Modelo {
         return true;
     }
 
-    public static boolean crearPlatoComida(Plato_comida platoComida) {
+    public boolean crearPlatoComida(Plato_comida platoComida) {
         ContentValues values = new ContentValues();
         values.put("id", platoComida.getId());
         values.put("Nombre", platoComida.getNombre());
@@ -226,7 +227,7 @@ public class Modelo {
         return null;
     }
 
-    public static Degustacion get_Degustacion(Integer id_plato) {
+    public Degustacion get_Degustacion(Integer id_plato) {
         Degustacion des = null;
         String query = "SELECT * from t_degustacion " +
                 "where id_plato_comida = " + id_plato;
@@ -247,7 +248,7 @@ public class Modelo {
         return null;
     }
     // Un método al que le pases un restaurante y te devuelva una lista de sus platos
-    public List<Plato_comida> get_platos_restaurante(String restaurante) {
+    public  List<Plato_comida> get_platos_restaurante(String restaurante) {
         List<Plato_comida> platos = new ArrayList<Plato_comida>();
         String query = "Select * from t_plato_comida where restaurante = '"+ restaurante + "'";
         Cursor cursor = db.rawQuery(query, null);
@@ -298,7 +299,7 @@ public class Modelo {
     public double valoracion_media_restaurante(String restaurante){
         Integer media_res = 0;
         List<Plato_comida> platos = get_platos_restaurante(restaurante);
-        List<Integer> medias = new ArrayList<>();
+       /* List<Integer> medias = new ArrayList<>();
         if(platos.size() == 0) return -1;
         int i = -1;
         double res = 0;
@@ -308,10 +309,10 @@ public class Modelo {
         }
         System.out.println(res+"/"+platos.size());
         return res/platos.size();
-        /*
+        /**/
         for (int i = 0 ; i < platos.size();i++) {
             int media_plato = 0;
-            List<Degustacion> degustaciones = listar_degustaciones_restaurante(i);
+            List<Degustacion> degustaciones = listar_degustaciones_restaurante(platos.get(i).getId());
             if (degustaciones.size() == 0) continue;
             for (int j = 0; j < degustaciones.size(); j++) {
                 media_plato += Integer.parseInt(degustaciones.get(j).getCalificacion());
@@ -319,7 +320,7 @@ public class Modelo {
             media_res += (media_plato / degustaciones.size());
         }
         media_res = (media_res/platos.size());
-        return  media_res;*/
+        return  media_res;
     }
 
     private double media(List<Degustacion> l) {
@@ -438,4 +439,32 @@ public class Modelo {
         }
         return null;
     }
+
+// listar todos los posibles galardones -> Atributo de galardones...
+
+
+
+// subir número de degustaciones de x usuario por cantidad c
+    public void aumentar_degustacion_galardon (String username,String tipo,int c) {
+        String query = "SELECT * from t_galardones where tipo = '" + tipo + "' and username = '" + username + "'";
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor != null) {
+            cursor.moveToFirst();
+            try {
+                //GET numero degustciones
+                @SuppressLint("Range") Integer degustacion = cursor.getInt(cursor.getColumnIndex("Degustaciones"));
+                degustacion += c;
+                //UPDATE numero degustaciones
+                ContentValues values = new ContentValues();
+                values.put("Degustaciones", degustacion);
+                String selection = "Username LIKE ? and Tipo LIKE ?";
+                String[] selectionArgs = {username,tipo};
+                db.update("t_galardones", values, selection, selectionArgs);
+
+            } catch (Exception e) {
+
+            }
+        }
+    }
+
 }

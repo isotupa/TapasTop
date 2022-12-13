@@ -100,17 +100,17 @@ public class LoginActivity extends AppCompatActivity {
             Restaurante res2 = new Restaurante("Kurger Bing", "Calle Menor", "admin");
             Restaurante res3 = new Restaurante("Wendys", "Calle Central", "admin");
 
-            Modelo.crearRestaurante(res1);
-            Modelo.crearRestaurante(res2);
-            Modelo.crearRestaurante(res3);
+            c.crearRestaurante(res1);
+            c.crearRestaurante(res2);
+            c.crearRestaurante(res3);
 
             Plato_comida p1 = new Plato_comida(10, "KrangreBurger", "Comida Rápida", "USA", "Malo", "MacDonalds");
             Plato_comida p2 = new Plato_comida(11, "QuarterPound", "Comida Rápida", "USA", "Bien", "Kurger Bing");
             Plato_comida p3 = new Plato_comida(12, "Burger", "Comida Rápida", "USA", "Malo", "Wendys");
 
-            Modelo.crearPlatoComida(p1);
-            Modelo.crearPlatoComida(p2);
-            Modelo.crearPlatoComida(p3);
+            c.crearPlatoComida(p1);
+            c.crearPlatoComida(p2);
+            c.crearPlatoComida(p3);
         }
 
 
