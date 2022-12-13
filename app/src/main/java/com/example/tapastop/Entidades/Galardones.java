@@ -9,16 +9,28 @@ public class Galardones {
     private String tipo;
     private Integer id;
     private Integer degustaciones;
+    private Integer nivel;
+
+    public Integer getNivel() {
+        return nivel;
+    }
+
+    public void setNivel(Integer nivel) {
+        this.nivel = nivel;
+    }
+
+
 
     public List getTipos() {
         return tipos;
     }
 
-    public Galardones(String username, String tipo, Integer id, Integer degustaciones){
+    public Galardones(String username, String tipo, Integer id, Integer degustaciones,Integer nivel){
         this.username = username;
         this.tipo = tipo;
         this.id = id;
         this.degustaciones = degustaciones;
+        this.nivel=nivel;
         tipos.add("Tortilla");
         tipos.add("Paella");
         tipos.add("Pizza");

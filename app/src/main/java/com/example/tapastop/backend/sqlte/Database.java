@@ -73,6 +73,7 @@ public class Database extends SQLiteOpenHelper {
                 "Username TEXT NOT NULL," +
                 "Tipo TEXT NOT NULL,"+
                 "Degustaciones INTEGER NOT NULL,"+
+                "Nivel INTEGER NOT NULL,"+
                 "FOREIGN KEY(Username) REFERENCES TABLE_USUARIOS(Username))");
 
     }
