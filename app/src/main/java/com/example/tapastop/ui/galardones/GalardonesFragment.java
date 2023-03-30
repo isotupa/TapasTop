@@ -21,6 +21,7 @@ import com.example.tapastop.R;
 import com.example.tapastop.backend.adapters.DegustacionAdapter;
 import com.example.tapastop.backend.adapters.PlatoAdapter;
 import com.example.tapastop.backend.sqlte.Controlador;
+import com.example.tapastop.backend.sqlte.Modelo;
 import com.example.tapastop.databinding.FragmentAyudaBinding;
 import com.example.tapastop.databinding.FragmentGalardonesBinding;
 
@@ -52,7 +53,7 @@ public class GalardonesFragment extends Fragment {
         gs.add("Paellas");
         gs.add("Pizzas");
         gs.add("Hamburguesas");
-        PlatoAdapter adapter = new PlatoAdapter(gs);
+        PlatoAdapter adapter = new PlatoAdapter(Modelo.get_galardones(u.getUsername()));
 
         rec.setAdapter(adapter);
         rec.setItemAnimator(new DefaultItemAnimator());

@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.tapastop.Entidades.Galardones;
 import com.example.tapastop.Entidades.Plato_comida;
 import com.example.tapastop.Entidades.Restaurante;
 import com.example.tapastop.Entidades.Usuario;
@@ -111,6 +112,15 @@ public class LoginActivity extends AppCompatActivity {
             c.crearPlatoComida(p1);
             c.crearPlatoComida(p2);
             c.crearPlatoComida(p3);
+
+            Galardones g1 = new Galardones("admin", "Paella", 1, 0, 0);
+            Galardones g2 = new Galardones("admin", "Pizza", 2, 0, 0);
+            Galardones g3 = new Galardones("admin", "Tortilla", 3, 0, 0);
+
+            Modelo.nuevo_galardon(g1);
+            Modelo.nuevo_galardon(g2);
+            Modelo.nuevo_galardon(g3);
+
         }
 
 

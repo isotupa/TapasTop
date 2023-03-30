@@ -11,8 +11,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.tapastop.Entidades.Galardones;
 import com.example.tapastop.Entidades.Usuario;
 import com.example.tapastop.backend.sqlte.Controlador;
+import com.example.tapastop.backend.sqlte.Modelo;
 
 public class crearCuenta extends AppCompatActivity {
 
@@ -28,6 +30,8 @@ public class crearCuenta extends AppCompatActivity {
     TextView pwWarning;
     TextView emailWarning;
     TextView usernameWarning;
+
+    static int a = 10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,6 +102,16 @@ public class crearCuenta extends AppCompatActivity {
                         Usuario u = new Usuario(String.valueOf(username.getText()), String.valueOf(password2.getText()),
                                 anyos + "", String.valueOf(email.getText()));
                         c.crearCuenta(u);
+
+
+                        Galardones g1 = new Galardones(username.getText().toString(), "Paella", 90, 0, 0);
+                        Galardones g2 = new Galardones(username.getText().toString(), "Pizza", 91, 0, 0);
+                        Galardones g3 = new Galardones(username.getText().toString(), "Tortilla", 92, 0, 0);
+
+                        Modelo.nuevo_galardon(g1);
+                        Modelo.nuevo_galardon(g2);
+                        Modelo.nuevo_galardon(g3);
+
                         c.activo = u;
                         //startActivity(new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:" + String.valueOf(email.getText()))));
                         Intent intent = new Intent(crearCuenta.this, crearCuenta2.class);

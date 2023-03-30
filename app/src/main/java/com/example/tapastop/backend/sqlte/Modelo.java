@@ -303,17 +303,7 @@ public class Modelo {
     public double valoracion_media_restaurante(String restaurante) {
         Integer media_res = 0;
         List<Plato_comida> platos = get_platos_restaurante(restaurante);
-       /* List<Integer> medias = new ArrayList<>();
         if(platos.size() == 0) return -1;
-        int i = -1;
-        double res = 0;
-        for(Plato_comida p : platos) {
-            double avgDegustaciones = media(listar_degustaciones_restaurante(i++));
-            if(avgDegustaciones != -1) res += avgDegustaciones;
-        }
-        System.out.println(res+"/"+platos.size());
-        return res/platos.size();
-        /**/
         for (int i = 0; i < platos.size(); i++) {
             int media_plato = 0;
             List<Degustacion> degustaciones = listar_degustaciones_restaurante(platos.get(i).getId());
@@ -449,7 +439,7 @@ public class Modelo {
 
 
     // subir número de degustaciones de x usuario por cantidad c
-    public void aumentar_degustacion_galardon(String username, String tipo, int c) {
+    public static void aumentar_degustacion_galardon(String username, String tipo, int c) {
         String query = "SELECT * from t_galardones where tipo = '" + tipo + "' and username = '" + username + "'";
         Cursor cursor = db.rawQuery(query, null);
         if (cursor != null) {
@@ -472,7 +462,7 @@ public class Modelo {
     }
 
     //Devuelve lista de todos los galardones de un usuario
-    public List<Galardones> get_galardones(String username) {
+    public static List<Galardones> get_galardones(String username) {
         List<Galardones> galardones = new ArrayList<>();
         String query = "SELECT * from t_galardones where username = '"+username+"'";
         Cursor cursor = db.rawQuery(query, null);
@@ -492,5 +482,15 @@ public class Modelo {
             return galardones;
         }
         return galardones;
+    }
+
+    public static void  nuevo_galardon(Galardones g){
+        ContentValues values = new ContentValues();
+        values.put("Username",g.getUsername());
+        values.put("Tipo", g.getTipo());
+        values.put("id", g.getId());
+        values.put("Degustaciones", g.getDegustaciones());
+        values.put("Nivel",g.getNivel());
+        db.insert("t_galardones", null, values);
     }
 }

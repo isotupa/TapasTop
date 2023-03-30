@@ -18,6 +18,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.tapastop.EditarPerfilActivity;
 import com.example.tapastop.Entidades.Degustacion;
+import com.example.tapastop.Entidades.Galardones;
 import com.example.tapastop.Entidades.Plato_comida;
 import com.example.tapastop.Entidades.Usuario;
 import com.example.tapastop.FavFoodActivity;
@@ -26,6 +27,7 @@ import com.example.tapastop.MainActivity2;
 import com.example.tapastop.R;
 import com.example.tapastop.UserActivity;
 import com.example.tapastop.backend.sqlte.Controlador;
+import com.example.tapastop.backend.sqlte.Modelo;
 import com.example.tapastop.databinding.FragmentHomeBinding;
 
 import java.util.ArrayList;
@@ -91,6 +93,12 @@ public class HomeFragment extends Fragment {
             degust.setText("Degustaciones: " + c.listarDegustaciones(u.getUsername()).size());
         locales_nuevos.setText("Locales nuevos: " + c.restaurantes_usuarios(u.getUsername()).size());
         solicitudes.setText("0 solicitudes nuevas");
+
+        List<Galardones> g = Modelo.get_galardones(u.getUsername());
+        galardon1.setText(g.get(0).getTipo());
+        galardon2.setText(g.get(1).getTipo());
+        galardon3.setText(g.get(2).getTipo());
+
 
         List<Degustacion> listFavoritas = c.listar_degustaciones_Orden_calificacion(u.getUsername());
 

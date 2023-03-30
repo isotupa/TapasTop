@@ -8,15 +8,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.tapastop.Entidades.Galardones;
 import com.example.tapastop.R;
 
 import java.util.List;
 
 public class PlatoAdapter extends RecyclerView.Adapter<PlatoAdapter.ViewHolder>{
-    List<String> deg;
+    List<Galardones> deg;
 
     // Constructor for initialization
-    public PlatoAdapter(List<String> deg) {
+    public PlatoAdapter(List<Galardones> deg) {
         this.deg = deg;
     }
     @NonNull
@@ -30,8 +31,11 @@ public class PlatoAdapter extends RecyclerView.Adapter<PlatoAdapter.ViewHolder>{
     }
     @Override
     public void onBindViewHolder(@NonNull PlatoAdapter.ViewHolder holder, int position) {
-        holder.gal.setText(deg.get(position)+"");
-        holder.niv.setText(deg.get(position)+"");
+        holder.gal.setText(deg.get(position).getTipo());
+        int nivel;
+        if(deg.get(position).getDegustaciones() == 0) nivel = 0;
+        else nivel = (int)(Math.log(deg.get(position).getDegustaciones()) / Math.log(2));
+        holder.niv.setText("Nivel: " + nivel);
     }
 
     @Override
